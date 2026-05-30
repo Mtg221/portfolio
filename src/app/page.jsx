@@ -283,7 +283,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* CV */}
+
       <section id="cv" className="py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-sm font-mono text-blue-400 mb-2">04. CV</h2>
