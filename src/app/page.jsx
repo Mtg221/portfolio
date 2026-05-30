@@ -9,7 +9,6 @@ const projects = [
     stack: ["React", "Vite", "Node.js", "Express", "MongoDB"],
     live: "https://device-tracker-delta.vercel.app",
     github: "https://github.com/Mtg221/device-tracker",
-    color: "#3B82F6",
   },
   {
     title: "Sénégal Dishes",
@@ -18,7 +17,6 @@ const projects = [
     stack: ["React", "Vite", "Node.js", "Express", "MongoDB"],
     live: "https://restaurant-self-kappa-35.vercel.app",
     github: "https://github.com/Mtg221/restaurant",
-    color: "#F97316",
   },
   {
     title: "TicTacToe Multijoueur",
@@ -27,7 +25,6 @@ const projects = [
     stack: ["React", "Node.js", "Socket.io", "WebSockets"],
     live: "https://multiplayer-tic-tac-toe-delta.vercel.app",
     github: "https://github.com/Mtg221/multiplayer_tic_tac_toe",
-    color: "#10B981",
   },
 ];
 
@@ -38,13 +35,21 @@ const skills = [
   { category: "DevOps & Outils", items: ["Git", "Vercel", "Render", "Unix"] },
 ];
 
+const navItems = [
+  { id: "about", label: "À propos" },
+  { id: "projects", label: "Projets" },
+  { id: "skills", label: "Compétences" },
+  { id: "cv", label: "CV" },
+  { id: "contact", label: "Contact" },
+];
+
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "projects", "skills", "contact"];
+      const sections = ["hero", "about", "projects", "skills", "cv", "contact"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el) {
@@ -76,15 +81,15 @@ export default function Portfolio() {
           </span>
           {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-6 text-sm">
-            {["about", "projects", "skills", "contact"].map((s) => (
+            {navItems.map(({ id, label }) => (
               <button
-                key={s}
-                onClick={() => scrollTo(s)}
-                className={`capitalize transition-colors ${
-                  activeSection === s ? "text-blue-400" : "text-gray-400 hover:text-white"
+                key={id}
+                onClick={() => scrollTo(id)}
+                className={`transition-colors ${
+                  activeSection === id ? "text-blue-400" : "text-gray-400 hover:text-white"
                 }`}
               >
-                {s === "about" ? "À propos" : s === "projects" ? "Projets" : s === "skills" ? "Compétences" : "Contact"}
+                {label}
               </button>
             ))}
             <a
@@ -111,12 +116,7 @@ export default function Portfolio() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="sm:hidden bg-gray-900 border-t border-gray-800 px-4 py-3 flex flex-col gap-3 text-sm">
-            {[
-              { id: "about", label: "À propos" },
-              { id: "projects", label: "Projets" },
-              { id: "skills", label: "Compétences" },
-              { id: "contact", label: "Contact" },
-            ].map(({ id, label }) => (
+            {navItems.map(({ id, label }) => (
               <button key={id} onClick={() => scrollTo(id)} className="text-left text-gray-300 hover:text-white py-1">
                 {label}
               </button>
@@ -157,7 +157,6 @@ export default function Portfolio() {
               Télécharger CV ↓
             </a>
           </div>
-          {/* Social links */}
           <div className="flex gap-4 mt-10">
             <a href="https://github.com/Mtg221" target="_blank" rel="noopener noreferrer"
               className="text-gray-500 hover:text-white transition-colors text-sm font-mono">
@@ -284,10 +283,33 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* CV */}
+      <section id="cv" className="py-24 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-sm font-mono text-blue-400 mb-2">04. CV</h2>
+          <h3 className="text-3xl font-bold text-white mb-6">Mon curriculum vitae</h3>
+          <div className="rounded-xl overflow-hidden border border-gray-700">
+            <iframe
+              src="/cv_fr.pdf"
+              className="w-full h-screen"
+            />
+          </div>
+          <div className="mt-6 text-center">
+            <a
+              href="/cv_fr.pdf"
+              download
+              className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-lg transition-all hover:scale-105 duration-200"
+            >
+              Télécharger CV ↓
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
-      <section id="contact" className="py-24 px-4">
+      <section id="contact" className="py-24 px-4 bg-gray-900">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-sm font-mono text-blue-400 mb-2">04. Contact</h2>
+          <h2 className="text-sm font-mono text-blue-400 mb-2">05. Contact</h2>
           <h3 className="text-3xl font-bold text-white mb-4">Travaillons ensemble</h3>
           <p className="text-gray-400 mb-10 leading-relaxed">
             Disponible pour des opportunités de stage, des missions freelance ou des collaborations sur des projets ambitieux.
