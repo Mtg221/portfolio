@@ -65,8 +65,8 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const scrollTo = (id: string) => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
 
@@ -79,7 +79,6 @@ export default function Portfolio() {
           <span className="font-bold text-white text-sm tracking-tight">
             PMT<span className="text-blue-400">.</span>
           </span>
-          {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-6 text-sm">
             {navItems.map(({ id, label }) => (
               <button
@@ -100,7 +99,6 @@ export default function Portfolio() {
               CV ↓
             </a>
           </div>
-          {/* Mobile menu button */}
           <button
             className="sm:hidden text-gray-400 hover:text-white"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -113,7 +111,6 @@ export default function Portfolio() {
             </svg>
           </button>
         </div>
-        {/* Mobile menu */}
         {menuOpen && (
           <div className="sm:hidden bg-gray-900 border-t border-gray-800 px-4 py-3 flex flex-col gap-3 text-sm">
             {navItems.map(({ id, label }) => (
@@ -283,26 +280,19 @@ export default function Portfolio() {
         </div>
       </section>
 
-
+      {/* CV */}
       <section id="cv" className="py-24 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-sm font-mono text-blue-400 mb-2">04. CV</h2>
-          <h3 className="text-3xl font-bold text-white mb-6">Mon curriculum vitae</h3>
-          <div className="rounded-xl overflow-hidden border border-gray-700">
-            <iframe
-              src="/cv_fr.pdf"
-              className="w-full h-screen"
-            />
-          </div>
-          <div className="mt-6 text-center">
-            <a
-              href="/cv_fr.pdf"
-              download
-              className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-lg transition-all hover:scale-105 duration-200"
-            >
-              Télécharger CV ↓
-            </a>
-          </div>
+          <h3 className="text-3xl font-bold text-white mb-4">Mon curriculum vitae</h3>
+          <p className="text-gray-400 mb-8">Télécharge mon CV pour voir mon parcours complet.</p>
+          <a
+            href="/cv_fr.pdf"
+            download
+            className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-lg transition-all hover:scale-105 duration-200 text-lg"
+          >
+            ↓ Télécharger mon CV (PDF)
+          </a>
         </div>
       </section>
 
