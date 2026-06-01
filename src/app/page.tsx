@@ -7,7 +7,7 @@ const projects = [
     description:
       "Application complète de gestion de réservation de véhicules. Architecture fullstack avec gestion des rôles, authentification sécurisée et interactions dynamiques entre frontend et backend.",
     stack: ["React", "Vite", "Node.js", "Express", "MongoDB"],
-    live: "https://device-tracker-delta.vercel.app",
+    live: "https://locationsvoituresdemakh.vercel.app/",
     github: "https://github.com/Mtg221/device-tracker",
   },
   {
@@ -15,7 +15,7 @@ const projects = [
     description:
       "Plateforme de commande en ligne pour restaurants. Catalogue de plats, panier, authentification, dashboard admin et gestion des livraisons — prêt pour la production.",
     stack: ["React", "Vite", "Node.js", "Express", "MongoDB"],
-    live: "https://restaurant-self-kappa-35.vercel.app",
+    live: "https://restaurantdemakh.vercel.app/",
     github: "https://github.com/Mtg221/restaurant",
   },
   {
