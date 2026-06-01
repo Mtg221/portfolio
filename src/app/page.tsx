@@ -35,10 +35,22 @@ const skills = [
   { category: "DevOps & Outils", items: ["Git", "Vercel", "Render", "Unix"] },
 ];
 
+const certifications = [
+  {
+    title: "Fundamentals of Deep Learning",
+    issuer: "NVIDIA",
+    date: "Mai 2025",
+    id: "4L3CQglaSmSDhAupux3W1Q",
+    link: "https://learn.nvidia.com/certificates?id=4L3CQglaSmSDhAupux3W1Q#",
+    color: "#76B900",
+  },
+];
+
 const navItems = [
   { id: "about", label: "À propos" },
   { id: "projects", label: "Projets" },
   { id: "skills", label: "Compétences" },
+  { id: "certifications", label: "Certifications" },
   { id: "cv", label: "CV" },
   { id: "contact", label: "Contact" },
 ];
@@ -49,7 +61,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "about", "projects", "skills", "cv", "contact"];
+      const sections = ["hero", "about", "projects", "skills", "certifications", "cv", "contact"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el) {
@@ -65,8 +77,8 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-    const scrollTo = (id: string) => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
 
@@ -226,20 +238,12 @@ export default function Portfolio() {
                     <p className="text-gray-400 leading-relaxed max-w-xl">{p.description}</p>
                   </div>
                   <div className="flex gap-3 shrink-0">
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white text-xs font-bold px-4 py-2 rounded-md transition-all"
-                    >
+                    <a href={p.github} target="_blank" rel="noopener noreferrer"
+                      className="border border-gray-700 hover:border-gray-500 text-gray-400 hover:text-white text-xs font-bold px-4 py-2 rounded-md transition-all">
                       GitHub
                     </a>
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-4 py-2 rounded-md transition-all"
-                    >
+                    <a href={p.live} target="_blank" rel="noopener noreferrer"
+                      className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-4 py-2 rounded-md transition-all">
                       Live ↗
                     </a>
                   </div>
@@ -280,10 +284,49 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Certifications */}
+      <section id="certifications" className="py-24 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-sm font-mono text-blue-400 mb-2">04. Certifications</h2>
+          <h3 className="text-3xl font-bold text-white mb-10">Certifications obtenues</h3>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {certifications.map((cert) => (
+              <a
+                key={cert.id}
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-gray-600 transition-all duration-300 group block"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg font-bold"
+                      style={{ backgroundColor: "#76B90020", color: "#76B900" }}>
+                      N
+                    </div>
+                    <div>
+                      <p className="text-xs font-mono text-gray-500">{cert.issuer}</p>
+                      <p className="text-xs text-gray-600">{cert.date}</p>
+                    </div>
+                  </div>
+                  <span className="text-gray-600 group-hover:text-white transition-colors text-xs font-mono">
+                    Vérifier ↗
+                  </span>
+                </div>
+                <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors mb-2">
+                  {cert.title}
+                </h4>
+                <p className="text-xs font-mono text-gray-600">ID : {cert.id}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CV */}
-      <section id="cv" className="py-24 px-4">
+      <section id="cv" className="py-24 px-4 bg-gray-900">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-sm font-mono text-blue-400 mb-2">04. CV</h2>
+          <h2 className="text-sm font-mono text-blue-400 mb-2">05. CV</h2>
           <h3 className="text-3xl font-bold text-white mb-4">Mon curriculum vitae</h3>
           <p className="text-gray-400 mb-8">Télécharge mon CV pour voir mon parcours complet.</p>
           <a
@@ -297,26 +340,20 @@ export default function Portfolio() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 px-4 bg-gray-900">
+      <section id="contact" className="py-24 px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-sm font-mono text-blue-400 mb-2">05. Contact</h2>
+          <h2 className="text-sm font-mono text-blue-400 mb-2">06. Contact</h2>
           <h3 className="text-3xl font-bold text-white mb-4">Travaillons ensemble</h3>
           <p className="text-gray-400 mb-10 leading-relaxed">
             Disponible pour des opportunités de stage, des missions freelance ou des collaborations sur des projets ambitieux.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <a
-              href="mailto:asstallfils@gmail.com"
-              className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-all hover:scale-105 duration-200"
-            >
+            <a href="mailto:asstallfils@gmail.com"
+              className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-all hover:scale-105 duration-200">
               ✉️ asstallfils@gmail.com
             </a>
-            <a
-              href="https://wa.me/221781224646"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-200"
-            >
+            <a href="https://wa.me/221781224646" target="_blank" rel="noopener noreferrer"
+              className="border border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-200">
               💬 WhatsApp
             </a>
           </div>
