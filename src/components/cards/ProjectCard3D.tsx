@@ -1,0 +1,102 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Github, ExternalLink } from "lucide-react";
+import { Project } from "@/app/projects/[slug]/page";
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+}
+
+export function ProjectCard3D({ project, index }: ProjectCardProps) {
+  return (
+    <motion.div
+      className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all duration-500"
+      initial={{ opacity: 0, y: 50, rotateY: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      whileHover={{ 
+        scale: 1.02,
+        rotateY: 5,
+        rotateX: -5,
+      }}
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      {/* Image placeholder */}
+      <div 
+        className="h-48 w-full relative overflow-hidden"
+        style={{ 
+          background: `linear-gradient(135deg, ${project.color}20, ${project.color}40)`,
+        }}
+      >
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-6xl font-bold opacity-20" style={{ color: project.color }}>
+            {project.title.charAt(0)}
+          </span>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-xs font-mono text-blue-400">0{index + 1}</span>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-400 transition-colors">
+            {project.title}
+          </h3>
+        </div>
+
+        <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+          {project.shortDescription}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.stack.slice(0, 4).map((tech) => (
+            <span
+              key={tech}
+              className="px-2 py-1 text-xs rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
+            >
+              {tech}
+            </span>
+          ))}
+          {project.stack.length > 4 && (
+            <span className="px-2 py-1 text-xs rounded-full bg-gray-500/10 text-gray-400">
+              +{project.stack.length - 4}
+            </span>
+          )}
+        </div>
+
+        <div className="flex gap-3">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg border border-gray-300 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300 transition-all"
+          >
+            <Github className="w-4 h-4" />
+            Code
+          </a>
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all ml-auto"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Live
+          </a>
+        </div>
+      </div>
+
+      {/* Glow effect */}
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+        style={{
+          boxShadow: `0 0 60px ${project.color}40`,
+        }}
+      />
+    </motion.div>
+  );
+}
