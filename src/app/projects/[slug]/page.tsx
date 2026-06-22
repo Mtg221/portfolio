@@ -6,7 +6,6 @@ import { ArrowLeft, Github, ExternalLink, Code, CheckCircle } from "lucide-react
 import { projects } from "@/lib/data";
 import { GradientText } from "@/components/ui/GradientText";
 import { GlowButton } from "@/components/ui/GlowButton";
-import { ThemeProvider } from "@/lib/theme";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 
 export interface Project {
@@ -31,22 +30,19 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <ThemeProvider>
-        <div className="min-h-screen bg-white dark:bg-gray-950 flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Projet non trouvé</h1>
-            <GlowButton onClick={() => router.push("/")} color="blue">
-              Retour à l'accueil
-            </GlowButton>
-          </div>
+      <div className="min-h-screen bg-white dark:bg-gray-950 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Projet non trouvé</h1>
+          <GlowButton onClick={() => router.push("/")} color="blue">
+            Retour à l'accueil
+          </GlowButton>
         </div>
-      </ThemeProvider>
+      </div>
     );
   }
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-gray-950 relative">
+    <div className="min-h-screen bg-white dark:bg-gray-950 relative">
         <ParticleBackground />
         
         {/* Header */}
@@ -125,16 +121,32 @@ export default function ProjectDetailPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800"
+              className="rounded-2xl overflow-hidden border border-gray-800 h-64 md:h-96 relative"
               style={{
-                background: `linear-gradient(135deg, ${project.color}20, ${project.color}40)`,
+                background: `linear-gradient(135deg, ${project.color}30 0%, ${project.color}10 100%)`,
               }}
             >
-              <div className="h-64 md:h-96 flex items-center justify-center">
-                <span className="text-8xl md:text-9xl font-bold opacity-20" style={{ color: project.color }}>
-                  {project.title.charAt(0)}
-                </span>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div 
+                  className="w-32 h-32 md:w-48 md:h-48 rounded-3xl flex items-center justify-center shadow-2xl"
+                  style={{ 
+                    background: `linear-gradient(135deg, ${project.color}, ${project.color}cc)`,
+                  }}
+                >
+                  <span className="text-6xl md:text-8xl font-bold text-white">
+                    {project.title.charAt(0)}
+                  </span>
+                </div>
               </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute top-6 right-6 flex gap-3">
+                <div className="w-3 h-3 rounded-full bg-white/30" />
+                <div className="w-3 h-3 rounded-full bg-white/30" />
+                <div className="w-3 h-3 rounded-full bg-white/30" />
+              </div>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </motion.div>
           </div>
         </div>
@@ -233,6 +245,5 @@ export default function ProjectDetailPage() {
           </div>
         </div>
       </div>
-    </ThemeProvider>
-  );
+    );
 }

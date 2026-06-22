@@ -3,12 +3,10 @@
 import { useCallback } from "react";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { useTheme } from "@/lib/theme";
 import { useEffect, useState } from "react";
 import { tsParticles } from "@tsparticles/engine";
 
 export function ParticleBackground() {
-  const { theme } = useTheme();
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -46,10 +44,10 @@ export function ParticleBackground() {
           },
           particles: {
             color: {
-              value: theme === "light" ? "#3B82F6" : "#60A5FA",
+              value: "#60A5FA",
             },
             links: {
-              color: theme === "light" ? "#3B82F6" : "#60A5FA",
+              color: "#60A5FA",
               distance: 150,
               enable: true,
               opacity: 0.2,

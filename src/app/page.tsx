@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ThemeProvider } from "@/lib/theme";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
@@ -52,24 +51,22 @@ export default function Portfolio() {
   }
 
   return (
-    <ThemeProvider>
-      <div className="relative min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300">
-        <ParticleBackground />
-        
-        <Navbar activeSection={activeSection} scrollTo={scrollTo} />
-        
-        <main>
-          <Hero scrollTo={scrollTo} />
-          <About />
-          <Projects />
-          <Skills />
-          <Certifications />
-          <CV />
-          <Contact />
-        </main>
+    <div className="relative min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300">
+      <ParticleBackground />
+      
+      <Navbar activeSection={activeSection} scrollTo={scrollTo} />
+      
+      <main>
+        <Hero scrollTo={scrollTo} />
+        <About />
+        <Projects />
+        <Skills />
+        <Certifications />
+        <CV />
+        <Contact />
+      </main>
 
-        <Footer />
-      </div>
-    </ThemeProvider>
+      <Footer />
+    </div>
   );
 }

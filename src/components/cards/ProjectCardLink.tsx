@@ -23,17 +23,31 @@ export function ProjectCardLink({ project, index }: ProjectCardProps) {
       >
         {/* Image placeholder */}
         <div 
-          className="h-48 w-full relative overflow-hidden"
+          className="h-48 w-full relative overflow-hidden group-hover:scale-105 transition-transform duration-500"
           style={{ 
-            background: `linear-gradient(135deg, ${project.color}20, ${project.color}40)`,
+            background: `linear-gradient(135deg, ${project.color}30 0%, ${project.color}10 100%)`,
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-6xl font-bold opacity-20" style={{ color: project.color }}>
-              {project.title.charAt(0)}
-            </span>
+            <div 
+              className="w-24 h-24 rounded-2xl flex items-center justify-center shadow-2xl"
+              style={{ 
+                background: `linear-gradient(135deg, ${project.color}, ${project.color}cc)`,
+              }}
+            >
+              <span className="text-5xl font-bold text-white">
+                {project.title.charAt(0)}
+              </span>
+            </div>
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          
+          {/* Decorative elements */}
+          <div className="absolute top-4 right-4 flex gap-2">
+            <div className="w-2 h-2 rounded-full bg-white/30" />
+            <div className="w-2 h-2 rounded-full bg-white/30" />
+            <div className="w-2 h-2 rounded-full bg-white/30" />
+          </div>
         </div>
 
         {/* Content */}

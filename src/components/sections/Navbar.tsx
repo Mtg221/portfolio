@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { navItems } from "@/lib/data";
 import { Menu, X } from "lucide-react";
 
@@ -64,12 +63,10 @@ export function Navbar({ activeSection, scrollTo }: NavbarProps) {
               )}
             </motion.button>
           ))}
-          <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="sm:hidden flex items-center gap-4">
-          <ThemeToggle />
           <button
             className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
             onClick={() => setMenuOpen(!menuOpen)}
