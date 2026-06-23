@@ -40,15 +40,15 @@ const snippets = [
 
 // 9 columns — speeds & opacities varied to create depth
 const COLS = [
-  { offset: 0,  dur: 32,  opacity: 0.45, left: "1%",  color: "0,153,255"  },
-  { offset: 7,  dur: 48,  opacity: 0.22, left: "12%", color: "0,85,255"   },
-  { offset: 14, dur: 25,  opacity: 0.50, left: "24%", color: "0,204,255"  },
-  { offset: 4,  dur: 60,  opacity: 0.18, left: "36%", color: "0,85,255"   },
-  { offset: 20, dur: 38,  opacity: 0.38, left: "48%", color: "0,119,255"  },
-  { offset: 10, dur: 52,  opacity: 0.20, left: "60%", color: "0,85,255"   },
-  { offset: 28, dur: 28,  opacity: 0.42, left: "72%", color: "0,170,255"  },
-  { offset: 18, dur: 44,  opacity: 0.25, left: "83%", color: "0,85,255"   },
-  { offset: 24, dur: 35,  opacity: 0.35, left: "93%", color: "0,136,255"  },
+  { offset: 0,  dur: 32,  opacity: 0.10, left: "1%",  color: "0,153,255", blur: 0.8  },
+  { offset: 7,  dur: 48,  opacity: 0.05, left: "12%", color: "0,85,255",  blur: 1.2  },
+  { offset: 14, dur: 25,  opacity: 0.12, left: "24%", color: "0,170,255", blur: 0.6  },
+  { offset: 4,  dur: 60,  opacity: 0.04, left: "36%", color: "0,85,255",  blur: 1.5  },
+  { offset: 20, dur: 38,  opacity: 0.08, left: "48%", color: "0,119,255", blur: 0.9  },
+  { offset: 10, dur: 52,  opacity: 0.05, left: "60%", color: "0,85,255",  blur: 1.3  },
+  { offset: 28, dur: 28,  opacity: 0.11, left: "72%", color: "0,153,255", blur: 0.7  },
+  { offset: 18, dur: 44,  opacity: 0.06, left: "83%", color: "0,85,255",  blur: 1.1  },
+  { offset: 24, dur: 35,  opacity: 0.09, left: "93%", color: "0,136,255", blur: 0.8  },
 ];
 
 export function ScrollingCodeBackground() {
@@ -70,6 +70,7 @@ export function ScrollingCodeBackground() {
               left: col.left,
               color: `rgba(${col.color}, ${col.opacity})`,
               animation: `scrollCode ${col.dur}s linear infinite`,
+              filter: `blur(${col.blur}px)`,
             }}
           >
             {doubled.map((line, li) => (
