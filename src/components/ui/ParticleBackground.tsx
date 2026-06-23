@@ -22,7 +22,7 @@ export function ParticleBackground() {
   if (!init) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0">
+    <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 2 }}>
       <Particles
         id="tsparticles"
         particlesLoaded={particlesLoaded}

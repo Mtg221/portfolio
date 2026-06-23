@@ -66,7 +66,7 @@ export default function Portfolio() {
       
       <Navbar activeSection={activeSection} scrollTo={scrollTo} />
       
-      <main>
+      <main className="relative" style={{ zIndex: 10 }}>
         <Hero scrollTo={scrollTo} />
         <About />
         <Projects />
@@ -76,7 +76,9 @@ export default function Portfolio() {
         <Contact />
       </main>
 
-      <Footer />
+      <div className="relative" style={{ zIndex: 10 }}>
+        <Footer />
+      </div>
     </div>
   );
 }
