@@ -41,7 +41,7 @@ export const projects = [
     live: "https://locationsvoituresdemakh.vercel.app/",
     github: "https://github.com/Mtg221/device-tracker",
     image: "/projects/driveelite.png",
-    color: "#3B82F6",
+    color: "#0055FF",
   },
   {
     slug: "senegal-dishes",
@@ -63,7 +63,7 @@ export const projects = [
     live: "https://restaurantdemakh.vercel.app/",
     github: "https://github.com/Mtg221/restaurant",
     image: "/projects/senegal-dishes.png",
-    color: "#F97316",
+    color: "#0077FF",
   },
   {
     slug: "tictactoe",
@@ -85,7 +85,7 @@ export const projects = [
     live: "https://multiplayer-tic-tac-toe-delta.vercel.app",
     github: "https://github.com/Mtg221/multiplayer_tic_tac_toe",
     image: "/projects/tictactoe.png",
-    color: "#8B5CF6",
+    color: "#0099FF",
   },
   {
     slug: "nkg-couture",
@@ -107,7 +107,7 @@ export const projects = [
     live: "https://couture1.vercel.app/",
     github: "https://github.com/Mtg221/couture1",
     image: "/projects/nkg-couture.png",
-    color: "#EC4899",
+    color: "#00AAFF",
   },
   {
     slug: "footreserve",
@@ -129,7 +129,7 @@ export const projects = [
     live: "https://foot-vert.vercel.app/",
     github: "https://github.com/Mtg221/foot",
     image: "/projects/footreserve.png",
-    color: "#10B981",
+    color: "#00CCFF",
   },
 ];
 
@@ -147,7 +147,7 @@ export const certifications = [
     date: "Mai 2025",
     id: "4L3CQglaSmSDhAupux3W1Q",
     link: "https://learn.nvidia.com/certificates?id=4L3CQglaSmSDhAupux3W1Q#",
-    color: "#76B900",
+    color: "#0088FF",
     icon: "N",
   },
 ];

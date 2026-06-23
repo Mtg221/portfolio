@@ -7,7 +7,7 @@ interface GlowButtonProps {
   children: ReactNode;
   onClick?: () => void;
   href?: string;
-  variant?: "primary" | "secondary" | "outline";
+  variant?: "primary" | "outline";
   color?: string;
   className?: string;
   download?: boolean;
@@ -15,83 +15,57 @@ interface GlowButtonProps {
   rel?: string;
 }
 
-const colors: Record<string, { bg: string; border: string; glow: string; text: string; hoverBg: string }> = {
-  blue: {
-    bg:      "linear-gradient(135deg, #3b5ef7, #4f8ef7)",
-    border:  "rgba(96,165,250,0.5)",
-    glow:    "rgba(96,165,250,0.3)",
-    text:    "#ffffff",
-    hoverBg: "linear-gradient(135deg, #4f6fff, #60a5fa)",
-  },
-  violet: {
-    bg:      "linear-gradient(135deg, #7c3aed, #a855f7)",
-    border:  "rgba(167,139,250,0.5)",
-    glow:    "rgba(167,139,250,0.3)",
-    text:    "#ffffff",
-    hoverBg: "linear-gradient(135deg, #8b5cf6, #c084fc)",
-  },
-  green: {
-    bg:      "linear-gradient(135deg, #16a34a, #22c55e)",
-    border:  "rgba(74,222,128,0.4)",
-    glow:    "rgba(74,222,128,0.25)",
-    text:    "#ffffff",
-    hoverBg: "linear-gradient(135deg, #22c55e, #4ade80)",
-  },
-};
-
 export function GlowButton({
-  children, onClick, href, variant = "primary", color = "blue",
+  children, onClick, href,
+  variant = "primary",
+  color = "blue",
   className = "", download, target, rel,
 }: GlowButtonProps) {
-  const c = colors[color] ?? colors.blue;
-
   const isPrimary = variant === "primary";
-  const isOutline = variant === "outline";
 
-  const baseStyle: React.CSSProperties = isPrimary
-    ? { background: c.bg, color: c.text, border: `1px solid ${c.border}`, boxShadow: `0 4px 20px ${c.glow}` }
-    : isOutline
-    ? { background: 'rgba(8,9,28,0.5)', color: c.text, border: `1px solid ${c.border}` }
-    : { background: c.glow, color: c.text, border: `1px solid ${c.border}` };
+  const baseStyle: React.CSSProperties = isPrimary ? {
+    background:  "linear-gradient(135deg, #0044EE, #0077FF)",
+    color:       "#ffffff",
+    border:      "1px solid rgba(0,153,255,0.5)",
+    boxShadow:   "0 4px 20px rgba(0,85,255,0.30), inset 0 1px 0 rgba(255,255,255,0.08)",
+  } : {
+    background:  "rgba(0,85,255,0.06)",
+    color:       "#60b4ff",
+    border:      "1px solid rgba(0,85,255,0.35)",
+    boxShadow:   "none",
+  };
 
   const baseClass = [
-    "relative inline-flex items-center justify-center",
+    "relative inline-flex items-center justify-center gap-2",
     "font-bold py-2.5 px-6 rounded-xl text-sm",
     "transition-all duration-300 cursor-pointer select-none",
     className,
   ].join(" ");
 
-  const hoverProps = {
-    scale: 1.04,
-    y: -2,
-    boxShadow: `0 8px 32px ${c.glow}`,
+  const hoverStyle = isPrimary ? {
+    scale: 1.05, y: -2,
+    boxShadow: "0 8px 36px rgba(0,85,255,0.45), inset 0 1px 0 rgba(255,255,255,0.12)",
+  } : {
+    scale: 1.04, y: -2,
+    background: "rgba(0,85,255,0.12)",
+    borderColor: "rgba(0,153,255,0.6)",
+    boxShadow: "0 0 24px rgba(0,85,255,0.25)",
   };
 
   if (href) {
     return (
-      <motion.a
-        href={href}
-        download={download}
-        target={target}
-        rel={rel}
-        className={baseClass}
-        style={baseStyle}
-        whileHover={hoverProps}
-        whileTap={{ scale: 0.97 }}
-      >
+      <motion.a href={href} download={download} target={target} rel={rel}
+        className={baseClass} style={baseStyle}
+        whileHover={hoverStyle} whileTap={{ scale: 0.97 }}>
         {children}
       </motion.a>
     );
   }
 
   return (
-    <motion.button
-      onClick={onClick}
-      className={baseClass}
-      style={baseStyle}
-      whileHover={hoverProps}
-      whileTap={{ scale: 0.97 }}
-    >
+    <motion.button onClick={onClick}
+      className={baseClass} style={baseStyle}
+      whileHover={hoverStyle} whileTap={{ scale: 0.97 }}>
       {children}
     </motion.button>
   );
