@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
+import { ScrollingCodeBackground } from "@/components/ui/ScrollingCodeBackground";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Navbar } from "@/components/sections/Navbar";
@@ -48,9 +49,9 @@ export default function Portfolio() {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-base)' }}>
         <div className="flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
-          <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style={{ animationDelay: '0.2s' }} />
-          <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" style={{ animationDelay: '0.4s' }} />
+          <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--e-500)' }} />
+          <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--e-300)', animationDelay: '0.2s' }} />
+          <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--e-100)', animationDelay: '0.4s' }} />
         </div>
       </div>
     );
@@ -58,6 +59,7 @@ export default function Portfolio() {
 
   return (
     <div className="relative min-h-screen text-slate-200" style={{ background: 'var(--bg-base)' }}>
+      <ScrollingCodeBackground />
       <CursorGlow />
       <ScrollProgress />
       <ParticleBackground />

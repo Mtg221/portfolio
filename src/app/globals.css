@@ -112,6 +112,10 @@ body::-webkit-scrollbar-thumb:hover {
   96%       { opacity: 0.9; }
   97%       { opacity: 1; }
 }
+@keyframes scrollCode {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
 
 /* ─── Animation classes ─── */
 .animate-float         { animation: float 7s ease-in-out infinite; }

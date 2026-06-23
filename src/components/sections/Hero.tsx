@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { GradientText } from "@/components/ui/GradientText";
 import { GlowButton } from "@/components/ui/GlowButton";
 import { TypewriterText } from "@/components/ui/TypewriterText";
-import { FloatingCodeLines } from "@/components/ui/FloatingCodeLines";
 import { Github, Linkedin, Mail, Code2, Database, Server, Cpu, Zap, Globe, Layers } from "lucide-react";
 import { personalInfo } from "@/lib/data";
 
@@ -36,7 +35,6 @@ export function Hero({ scrollTo }: HeroProps) {
   return (
     <section id="hero" className="min-h-screen flex items-center px-4 pt-14 relative overflow-hidden hero-bg">
       <div className="absolute inset-0 cyber-grid opacity-60 pointer-events-none" />
-      <FloatingCodeLines />
 
       {/* Electric scan line */}
       <div className="electric-scan" style={{ top: "30%" }} />
