@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
+import { CursorGlow } from "@/components/ui/CursorGlow";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -56,6 +58,8 @@ export default function Portfolio() {
 
   return (
     <div className="relative min-h-screen text-slate-200" style={{ background: 'var(--bg-base)' }}>
+      <CursorGlow />
+      <ScrollProgress />
       <ParticleBackground />
       
       <Navbar activeSection={activeSection} scrollTo={scrollTo} />

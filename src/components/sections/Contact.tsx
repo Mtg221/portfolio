@@ -4,77 +4,110 @@ import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { GlowButton } from "@/components/ui/GlowButton";
 import { personalInfo } from "@/lib/data";
-import { Mail, MessageCircle, Github, Linkedin, Download } from "lucide-react";
+import { Mail, MessageCircle, Github, Linkedin, Download, Send, Sparkles, Coffee } from "lucide-react";
+
+const floatingIcons = [
+  { Icon: Mail,     top: "12%", left: "6%",  dur: 5, delay: 0,   color: "var(--blue)" },
+  { Icon: Send,     top: "72%", left: "90%", dur: 4, delay: 1,   color: "var(--violet)" },
+  { Icon: Coffee,   top: "80%", left: "5%",  dur: 6, delay: 2,   color: "#fb923c" },
+  { Icon: Sparkles, top: "15%", left: "88%", dur: 3, delay: 0.5, color: "var(--cyan)" },
+];
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 px-4 relative overflow-hidden" style={{ background: 'var(--bg-base)' }}>
-      <div className="absolute inset-0 dot-grid opacity-25 pointer-events-none" />
+    <section id="contact" className="py-24 px-4 relative overflow-hidden" style={{ background: "var(--bg-base)" }}>
+      <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-px section-divider" />
 
-      {/* Central aurora glow */}
+      {/* Floating icons */}
+      {floatingIcons.map(({ Icon, top, left, dur, delay, color }, i) => (
+        <motion.div key={i} className="absolute pointer-events-none"
+          style={{ top, left }}
+          animate={{ y: [-8, 8, -8], opacity: [0.2, 0.5, 0.2], rotate: [0, 15, 0] }}
+          transition={{ duration: dur, repeat: Infinity, ease: "easeInOut", delay }}>
+          <Icon className="w-5 h-5" style={{ color }} />
+        </motion.div>
+      ))}
+
+      {/* Center glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(79,70,229,0.08) 0%, rgba(124,58,237,0.05) 40%, transparent 70%)' }} />
+        style={{ background: "radial-gradient(ellipse, rgba(79,70,229,0.07) 0%, rgba(124,58,237,0.04) 40%, transparent 70%)" }} />
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <AnimatedSection>
-          <h2 className="text-xs font-mono font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--violet)' }}>06. Contact</h2>
+          {/* Availability badge */}
+          <motion.div
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6"
+            style={{ background: "rgba(74,222,128,0.08)", border: "1px solid rgba(74,222,128,0.25)" }}
+            animate={{ scale: [1, 1.03, 1] }}
+            transition={{ duration: 2.5, repeat: Infinity }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+            </span>
+            <span className="text-[11px] font-mono font-bold" style={{ color: "var(--green)" }}>
+              Disponible · Open to work
+            </span>
+          </motion.div>
+
+          <h2 className="text-xs font-mono font-bold uppercase tracking-widest mb-2" style={{ color: "var(--violet)" }}>06. Contact</h2>
           <h3 className="text-3xl md:text-4xl font-black text-slate-100 mb-4 tracking-tight">
             Travaillons ensemble
           </h3>
-          <p className="text-base mb-10 max-w-lg mx-auto leading-relaxed" style={{ color: '#64748b' }}>
+          <p className="text-base mb-10 max-w-lg mx-auto leading-relaxed" style={{ color: "#64748b" }}>
             Disponible pour des opportunités de stage, des missions freelance ou des collaborations sur des projets ambitieux.
           </p>
         </AnimatedSection>
 
-        {/* Primary CTAs */}
+        {/* CTAs */}
         <AnimatedSection delay={0.2}>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
             <GlowButton href={`mailto:${personalInfo.email}`} color="blue"
               className="flex items-center justify-center gap-2">
-              <Mail className="w-4 h-4" />
+              <motion.div animate={{ rotate: [0, -15, 15, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 1 }}>
+                <Mail className="w-4 h-4" />
+              </motion.div>
               {personalInfo.email}
             </GlowButton>
             <GlowButton href={personalInfo.whatsapp} target="_blank" rel="noopener noreferrer"
               variant="outline" color="green"
               className="flex items-center justify-center gap-2">
-              <MessageCircle className="w-4 h-4" />
+              <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                <MessageCircle className="w-4 h-4" />
+              </motion.div>
               WhatsApp
             </GlowButton>
           </div>
         </AnimatedSection>
 
-        {/* Social links card */}
+        {/* Social links */}
         <AnimatedSection delay={0.4}>
-          <motion.div
-            className="glass-card glass-card-hover rounded-2xl p-6 card-shine"
-            whileHover={{ scale: 1.01 }}
-          >
-            <p className="text-[10px] font-mono font-bold uppercase tracking-widest mb-5" style={{ color: 'var(--blue)' }}>
+          <motion.div className="glass-card glass-card-hover rounded-2xl p-6 card-shine"
+            whileHover={{ scale: 1.01 }}>
+            <p className="text-[10px] font-mono font-bold uppercase tracking-widest mb-5" style={{ color: "var(--blue)" }}>
               Retrouvez-moi sur
             </p>
             <div className="flex gap-3 justify-center flex-wrap">
               {[
-                { href: personalInfo.github,  icon: Github,   label: "GitHub",           color: '#94a3b8' },
-                { href: personalInfo.linkedin, icon: Linkedin, label: "LinkedIn",          color: '#60a5fa' },
-                { href: "/cv_fr.pdf",          icon: Download, label: "Télécharger CV",   color: '#a78bfa', download: true },
-              ].map(({ href, icon: Icon, label, color, download }) => (
+                { href: personalInfo.github,   Icon: Github,   label: "GitHub",         hColor: "#94a3b8" },
+                { href: personalInfo.linkedin,  Icon: Linkedin, label: "LinkedIn",        hColor: "#60a5fa" },
+                { href: "/cv_fr.pdf",           Icon: Download, label: "Télécharger CV",  hColor: "#a78bfa", dl: true },
+              ].map(({ href, Icon, label, hColor, dl }) => (
                 <motion.a
                   key={label}
                   href={href}
-                  target={!download ? "_blank" : undefined}
-                  rel={!download ? "noopener noreferrer" : undefined}
-                  download={download}
+                  target={!dl ? "_blank" : undefined}
+                  rel={!dl ? "noopener noreferrer" : undefined}
+                  download={dl}
                   className="flex items-center gap-2 text-xs font-mono px-4 py-2.5 rounded-xl transition-all duration-300"
-                  style={{
-                    color: '#64748b',
-                    background: 'rgba(99,102,241,0.06)',
-                    border: '1px solid rgba(99,102,241,0.12)',
-                  }}
-                  whileHover={{ scale: 1.06, y: -2, color, borderColor: `${color}40`, background: `${color}10` }}
+                  style={{ color: "#64748b", background: "rgba(99,102,241,0.06)", border: "1px solid rgba(99,102,241,0.12)" }}
+                  whileHover={{ scale: 1.06, y: -3, color: hColor, borderColor: `${hColor}40`, background: `${hColor}10` } as never}
                   whileTap={{ scale: 0.97 }}
                 >
-                  <Icon className="w-3.5 h-3.5" />
+                  <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.5 }}>
+                    <Icon className="w-3.5 h-3.5" />
+                  </motion.div>
                   {label}
                 </motion.a>
               ))}
