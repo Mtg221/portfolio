@@ -53,12 +53,14 @@ const COLS = [
 
 export function ScrollingCodeBackground() {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none select-none" style={{ zIndex: 1 }}>
+    <div
+      className="fixed inset-0 overflow-hidden pointer-events-none select-none"
+      style={{ zIndex: 20, mixBlendMode: "screen" }}
+    >
       {COLS.map((col, ci) => {
         const lines = Array.from({ length: 18 }, (_, i) =>
           snippets[(col.offset + i) % snippets.length]
         );
-        // Duplicate for seamless infinite scroll (translateY -50%)
         const doubled = [...lines, ...lines];
         return (
           <div
