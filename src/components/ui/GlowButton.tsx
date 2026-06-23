@@ -15,61 +15,71 @@ interface GlowButtonProps {
   rel?: string;
 }
 
+const colors: Record<string, { bg: string; border: string; glow: string; text: string; hoverBg: string }> = {
+  blue: {
+    bg:      "linear-gradient(135deg, #3b5ef7, #4f8ef7)",
+    border:  "rgba(96,165,250,0.5)",
+    glow:    "rgba(96,165,250,0.3)",
+    text:    "#ffffff",
+    hoverBg: "linear-gradient(135deg, #4f6fff, #60a5fa)",
+  },
+  violet: {
+    bg:      "linear-gradient(135deg, #7c3aed, #a855f7)",
+    border:  "rgba(167,139,250,0.5)",
+    glow:    "rgba(167,139,250,0.3)",
+    text:    "#ffffff",
+    hoverBg: "linear-gradient(135deg, #8b5cf6, #c084fc)",
+  },
+  green: {
+    bg:      "linear-gradient(135deg, #16a34a, #22c55e)",
+    border:  "rgba(74,222,128,0.4)",
+    glow:    "rgba(74,222,128,0.25)",
+    text:    "#ffffff",
+    hoverBg: "linear-gradient(135deg, #22c55e, #4ade80)",
+  },
+};
+
 export function GlowButton({
-  children,
-  onClick,
-  href,
-  variant = "primary",
-  color = "blue",
-  className = "",
-  download,
-  target,
-  rel,
+  children, onClick, href, variant = "primary", color = "blue",
+  className = "", download, target, rel,
 }: GlowButtonProps) {
-  const colorClasses = {
-    primary: `bg-${color}-600 hover:bg-${color}-500 text-white`,
-    secondary: `bg-${color}-500/20 hover:bg-${color}-500/30 text-${color}-400`,
-    outline: `border-2 border-${color}-600 hover:border-${color}-500 text-${color}-400 hover:text-${color}-300`,
+  const c = colors[color] ?? colors.blue;
+
+  const isPrimary = variant === "primary";
+  const isOutline = variant === "outline";
+
+  const baseStyle: React.CSSProperties = isPrimary
+    ? { background: c.bg, color: c.text, border: `1px solid ${c.border}`, boxShadow: `0 4px 20px ${c.glow}` }
+    : isOutline
+    ? { background: 'rgba(8,9,28,0.5)', color: c.text, border: `1px solid ${c.border}` }
+    : { background: c.glow, color: c.text, border: `1px solid ${c.border}` };
+
+  const baseClass = [
+    "relative inline-flex items-center justify-center",
+    "font-bold py-2.5 px-6 rounded-xl text-sm",
+    "transition-all duration-300 cursor-pointer select-none",
+    className,
+  ].join(" ");
+
+  const hoverProps = {
+    scale: 1.04,
+    y: -2,
+    boxShadow: `0 8px 32px ${c.glow}`,
   };
-
-  const glowColors = {
-    blue: "shadow-blue-500/50",
-    violet: "shadow-violet-500/50",
-    cyan: "shadow-cyan-500/50",
-    green: "shadow-green-500/50",
-    orange: "shadow-orange-500/50",
-    pink: "shadow-pink-500/50",
-  };
-
-  const baseClasses = `
-    relative font-bold py-3 px-6 rounded-lg 
-    transition-all duration-300 
-    hover:scale-105 hover:shadow-lg
-    ${glowColors[color as keyof typeof glowColors]}
-    ${colorClasses[variant]}
-    ${className}
-  `;
-
-  const content = (
-    <>
-      <span className="relative z-10">{children}</span>
-      <div className={`absolute inset-0 rounded-lg blur-lg opacity-50 ${colorClasses[variant]} transition-opacity duration-300`} />
-    </>
-  );
 
   if (href) {
     return (
       <motion.a
         href={href}
-        onClick={onClick}
         download={download}
         target={target}
         rel={rel}
-        className={baseClasses}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        className={baseClass}
+        style={baseStyle}
+        whileHover={hoverProps}
+        whileTap={{ scale: 0.97 }}
       >
-        {content}
+        {children}
       </motion.a>
     );
   }
@@ -77,11 +87,12 @@ export function GlowButton({
   return (
     <motion.button
       onClick={onClick}
-      className={baseClasses}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className={baseClass}
+      style={baseStyle}
+      whileHover={hoverProps}
+      whileTap={{ scale: 0.97 }}
     >
-      {content}
+      {children}
     </motion.button>
   );
 }

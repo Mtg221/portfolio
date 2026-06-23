@@ -44,14 +44,18 @@ export default function Portfolio() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <div className="text-blue-400 text-sm font-mono animate-pulse">Chargement...</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-base)' }}>
+        <div className="flex items-center gap-3">
+          <div className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
+          <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style={{ animationDelay: '0.2s' }} />
+          <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" style={{ animationDelay: '0.4s' }} />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300">
+    <div className="relative min-h-screen text-slate-200" style={{ background: 'var(--bg-base)' }}>
       <ParticleBackground />
       
       <Navbar activeSection={activeSection} scrollTo={scrollTo} />

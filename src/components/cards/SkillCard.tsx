@@ -8,77 +8,89 @@ interface SkillCardProps {
   index: number;
 }
 
-const categoryConfig: Record<string, { gradient: string; border: string; dot: string; label: string }> = {
-  Frontend: {
-    gradient: "from-blue-500/20 to-cyan-500/10",
-    border: "border-blue-500/30",
-    dot: "from-blue-400 to-cyan-400",
-    label: "text-blue-400",
+const cfg: Record<string, { accent: string; glow: string; badge: string; badgeBorder: string }> = {
+  "Frontend": {
+    accent:      "var(--blue)",
+    glow:        "rgba(96,165,250,0.12)",
+    badge:       "rgba(96,165,250,0.08)",
+    badgeBorder: "rgba(96,165,250,0.22)",
   },
-  Backend: {
-    gradient: "from-green-500/20 to-emerald-500/10",
-    border: "border-green-500/30",
-    dot: "from-green-400 to-emerald-400",
-    label: "text-green-400",
+  "Backend": {
+    accent:      "var(--green)",
+    glow:        "rgba(74,222,128,0.10)",
+    badge:       "rgba(74,222,128,0.07)",
+    badgeBorder: "rgba(74,222,128,0.22)",
   },
   "Bases de données": {
-    gradient: "from-orange-500/20 to-amber-500/10",
-    border: "border-orange-500/30",
-    dot: "from-orange-400 to-amber-400",
-    label: "text-orange-400",
+    accent:      "#fb923c",
+    glow:        "rgba(251,146,60,0.10)",
+    badge:       "rgba(251,146,60,0.07)",
+    badgeBorder: "rgba(251,146,60,0.22)",
   },
   "DevOps & Outils": {
-    gradient: "from-violet-500/20 to-purple-500/10",
-    border: "border-violet-500/30",
-    dot: "from-violet-400 to-purple-400",
-    label: "text-violet-400",
+    accent:      "var(--violet)",
+    glow:        "rgba(167,139,250,0.12)",
+    badge:       "rgba(167,139,250,0.08)",
+    badgeBorder: "rgba(167,139,250,0.22)",
   },
 };
 
+const fallback = cfg["Frontend"];
+
 export function SkillCard({ category, items, index }: SkillCardProps) {
-  const config = categoryConfig[category] ?? {
-    gradient: "from-blue-500/20 to-cyan-500/10",
-    border: "border-blue-500/30",
-    dot: "from-blue-400 to-cyan-400",
-    label: "text-blue-400",
-  };
+  const c = cfg[category] ?? fallback;
 
   return (
     <motion.div
-      className={`relative rounded-2xl p-6 border ${config.border} bg-gradient-to-br ${config.gradient} backdrop-blur-sm card-shine overflow-hidden`}
-      style={{ background: undefined }}
-      initial={{ opacity: 0, y: 40 }}
+      className="relative rounded-2xl p-5 card-shine overflow-hidden"
+      style={{
+        background: 'rgba(8, 9, 28, 0.8)',
+        border: '1px solid rgba(99, 102, 241, 0.12)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.35)',
+      }}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.6, type: "spring", stiffness: 100 }}
-      whileHover={{ scale: 1.03, translateY: -4 }}
+      transition={{ delay: index * 0.1, duration: 0.55, type: "spring", stiffness: 90 }}
+      whileHover={{
+        y: -5,
+        borderColor: c.badgeBorder,
+        boxShadow: `0 12px 40px rgba(0,0,0,0.5), 0 0 30px ${c.glow}`,
+      }}
     >
-      {/* Background gradient layer */}
-      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${config.gradient} dark:opacity-100 opacity-30`} />
-      <div className="absolute inset-0 rounded-2xl bg-white/80 dark:bg-gray-900/80" />
+      {/* Accent glow top edge */}
+      <div className="absolute top-0 left-4 right-4 h-px rounded-full"
+        style={{ background: `linear-gradient(90deg, transparent, ${c.accent}60, transparent)` }} />
 
-      {/* Decorative corner dot */}
-      <div className={`absolute top-3 right-3 w-2 h-2 rounded-full bg-gradient-to-r ${config.dot} opacity-60`} />
-
-      <div className="relative z-10">
-        <h4 className={`font-mono text-xs font-bold mb-4 uppercase tracking-widest ${config.label}`}>
+      {/* Category dot */}
+      <div className="flex items-center gap-2.5 mb-4">
+        <div className="w-2 h-2 rounded-full flex-shrink-0"
+          style={{ background: c.accent, boxShadow: `0 0 8px ${c.accent}` }} />
+        <h4 className="text-[10px] font-mono font-bold uppercase tracking-widest" style={{ color: c.accent }}>
           {category}
         </h4>
+      </div>
 
-        <div className="flex flex-wrap gap-2">
-          {items.map((skill, i) => (
-            <motion.span
-              key={skill}
-              className={`badge-tech bg-white/50 dark:bg-gray-800/50 ${config.border} ${config.label} hover:bg-white/80 dark:hover:bg-gray-700/80`}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 + i * 0.05, duration: 0.3 }}
-            >
-              {skill}
-            </motion.span>
-          ))}
-        </div>
+      {/* Skill pills */}
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((skill, i) => (
+          <motion.span
+            key={skill}
+            className="badge-tech"
+            style={{
+              background: c.badge,
+              color: c.accent,
+              borderColor: c.badgeBorder,
+            }}
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08 + i * 0.04, duration: 0.3 }}
+            whileHover={{ background: `${c.badge.replace('0.0', '0.1')}` }}
+          >
+            {skill}
+          </motion.span>
+        ))}
       </div>
     </motion.div>
   );
