@@ -33,7 +33,7 @@ export function Certifications() {
             <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">Certifications obtenues</h3>
             <motion.div animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
               transition={{ duration: 3, repeat: Infinity }}>
-              <Trophy className="w-7 h-7" style={{ color: "#0077FF" }} />
+              <Trophy className="w-7 h-7" style={{ color: "var(--e-300)" }} />
             </motion.div>
           </div>
         </AnimatedSection>
@@ -46,28 +46,28 @@ export function Certifications() {
                   whileHover={{ scale: 1.02, y: -5 }}>
                   {/* Animated corner glow */}
                   <motion.div className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-2xl pointer-events-none"
-                    style={{ background: `${cert.color}15` }}
-                    animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.7, 0.3] }}
+                    style={{ background: `${cert.color}12` }}
+                    animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }} />
 
                   <div className="flex items-start justify-between mb-5 relative z-10">
                     <div className="flex items-center gap-3">
                       <motion.div className="w-14 h-14 rounded-2xl flex items-center justify-center relative"
-                        style={{ background: `${cert.color}18`, border: `1px solid ${cert.color}30` }}
+                        style={{ background: `${cert.color}15`, border: `1px solid ${cert.color}28` }}
                         whileHover={{ rotate: 20, scale: 1.15 }} transition={{ type: "spring", stiffness: 300 }}>
                         <Award className="w-7 h-7" style={{ color: cert.color }} />
                         <motion.div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100"
-                          style={{ background: cert.color, boxShadow: `0 0 12px ${cert.color}` }}>
+                          style={{ background: cert.color, boxShadow: `0 0 10px ${cert.color}` }}>
                           <Star className="w-2 h-2 text-white fill-white" />
                         </motion.div>
                       </motion.div>
                       <div>
                         <p className="text-xs font-mono font-bold" style={{ color: cert.color }}>{cert.issuer}</p>
-                        <p className="text-[10px] mt-0.5" style={{ color: "#2a3f5a" }}>{cert.date}</p>
+                        <p className="text-[10px] mt-0.5" style={{ color: "#3a3a3a" }}>{cert.date}</p>
                       </div>
                     </div>
                     <motion.span className="text-[10px] font-mono flex items-center gap-1"
-                      style={{ color: "#2a3f5a" }}
+                      style={{ color: "#3a3a3a" }}
                       whileHover={{ color: "var(--e-200)", x: -2 } as never}>
                       Vérifier
                       <motion.span animate={{ x: [0, 3, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
@@ -79,7 +79,7 @@ export function Certifications() {
                   <h4 className="font-black text-white text-base mb-3 group-hover:text-slate-100 transition-colors relative z-10">
                     {cert.title}
                   </h4>
-                  <p className="text-[10px] font-mono relative z-10" style={{ color: "#1a2a40" }}>ID · {cert.id}</p>
+                  <p className="text-[10px] font-mono relative z-10" style={{ color: "#282828" }}>ID · {cert.id}</p>
 
                   <div className="mt-5 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{ background: `linear-gradient(90deg, transparent, ${cert.color}, transparent)` }} />

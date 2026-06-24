@@ -21,14 +21,14 @@ export function Contact() {
 
       {floatingIcons.map(({ Icon, top, left, dur, delay, color }, i) => (
         <motion.div key={i} className="absolute pointer-events-none" style={{ top, left }}
-          animate={{ y: [-8, 8, -8], opacity: [0.15, 0.45, 0.15], rotate: [0, 12, 0] }}
+          animate={{ y: [-8, 8, -8], opacity: [0.15, 0.40, 0.15], rotate: [0, 12, 0] }}
           transition={{ duration: dur, repeat: Infinity, ease: "easeInOut", delay }}>
           <Icon className="w-5 h-5" style={{ color }} />
         </motion.div>
       ))}
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, rgba(0,85,255,0.06) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(ellipse, rgba(255,255,255,0.03) 0%, transparent 70%)" }} />
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <AnimatedSection>
@@ -46,14 +46,14 @@ export function Contact() {
 
           <h2 className="text-xs font-mono font-bold uppercase tracking-widest mb-2" style={{ color: "var(--e-300)" }}>06. Contact</h2>
           <h3 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Travaillons ensemble</h3>
-          <p className="text-base mb-10 max-w-lg mx-auto leading-relaxed" style={{ color: "#3a5a7a" }}>
+          <p className="text-base mb-10 max-w-lg mx-auto leading-relaxed" style={{ color: "#555555" }}>
             Disponible pour des opportunités de stage, des missions freelance ou des collaborations sur des projets ambitieux.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
-            <GlowButton href={`mailto:${personalInfo.email}`} color="blue"
+            <GlowButton href={`mailto:${personalInfo.email}`}
               className="flex items-center justify-center gap-2">
               <motion.div animate={{ rotate: [0, -15, 15, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 1 }}>
                 <Mail className="w-4 h-4" />
@@ -61,7 +61,7 @@ export function Contact() {
               {personalInfo.email}
             </GlowButton>
             <GlowButton href={personalInfo.whatsapp} target="_blank" rel="noopener noreferrer"
-              variant="outline" color="blue"
+              variant="outline"
               className="flex items-center justify-center gap-2">
               <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
                 <MessageCircle className="w-4 h-4" />
@@ -88,8 +88,8 @@ export function Contact() {
                   rel={!dl ? "noopener noreferrer" : undefined}
                   download={dl}
                   className="flex items-center gap-2 text-xs font-mono px-4 py-2.5 rounded-xl"
-                  style={{ color: "#2a3f5a", background: "rgba(0,85,255,0.06)", border: "1px solid rgba(0,85,255,0.12)" }}
-                  whileHover={{ scale: 1.06, y: -3, color: "var(--e-200)", borderColor: "rgba(0,153,255,0.35)", background: "rgba(0,85,255,0.12)" } as never}
+                  style={{ color: "#404040", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+                  whileHover={{ scale: 1.06, y: -3, color: "var(--e-200)", borderColor: "rgba(255,255,255,0.22)", background: "rgba(255,255,255,0.08)" } as never}
                   whileTap={{ scale: 0.97 }}>
                   <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.5 }}>
                     <Icon className="w-3.5 h-3.5" />

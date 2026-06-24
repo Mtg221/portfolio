@@ -13,13 +13,13 @@ export function Skills() {
 
       {/* Corner glows */}
       <div className="absolute top-0 right-0 w-72 h-72 pointer-events-none"
-        style={{ background: 'radial-gradient(circle at top right, rgba(139,92,246,0.07) 0%, transparent 70%)' }} />
+        style={{ background: "radial-gradient(circle at top right, rgba(255,255,255,0.02) 0%, transparent 70%)" }} />
       <div className="absolute bottom-0 left-0 w-72 h-72 pointer-events-none"
-        style={{ background: 'radial-gradient(circle at bottom left, rgba(6,182,212,0.06) 0%, transparent 70%)' }} />
+        style={{ background: "radial-gradient(circle at bottom left, rgba(255,255,255,0.02) 0%, transparent 70%)" }} />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <AnimatedSection>
-          <h2 className="text-xs font-mono font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--violet)' }}>03. Compétences</h2>
+          <h2 className="text-xs font-mono font-bold uppercase tracking-widest mb-2" style={{ color: "var(--e-300)" }}>03. Compétences</h2>
           <h3 className="text-3xl md:text-4xl font-black text-slate-100 mb-10 tracking-tight">Stack technique</h3>
         </AnimatedSection>
 

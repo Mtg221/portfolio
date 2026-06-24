@@ -30,32 +30,32 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-base)' }}>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--bg-base)" }}>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-200 mb-4">Projet non trouvé</h1>
-          <GlowButton onClick={() => router.push("/")} color="blue">Retour à l'accueil</GlowButton>
+          <GlowButton onClick={() => router.push("/")}>Retour à l'accueil</GlowButton>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen relative text-slate-200" style={{ background: 'var(--bg-base)' }}>
+    <div className="min-h-screen relative text-slate-200" style={{ background: "var(--bg-base)" }}>
       <ParticleBackground />
 
       {/* Background radial from project color */}
       <div className="fixed inset-0 pointer-events-none"
-        style={{ background: `radial-gradient(ellipse at 50% 0%, ${project.color}12 0%, transparent 55%)` }} />
+        style={{ background: `radial-gradient(ellipse at 50% 0%, ${project.color}0e 0%, transparent 55%)` }} />
 
       {/* Header */}
       <div className="fixed top-0 left-0 right-0 z-50"
-        style={{ background: 'rgba(3,4,15,0.85)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(99,102,241,0.12)' }}>
+        style={{ background: "rgba(8,8,8,0.92)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center gap-4">
           <motion.button
             onClick={() => router.push("/#projects")}
             className="flex items-center gap-2 text-sm font-medium transition-colors"
-            style={{ color: '#64748b' }}
-            whileHover={{ x: -3, color: 'var(--blue)' } as never}
+            style={{ color: "#555555" }}
+            whileHover={{ x: -3, color: "var(--e-200)" } as never}
           >
             <ArrowLeft className="w-4 h-4" />
             Retour
@@ -69,10 +69,10 @@ export default function ProjectDetailPage() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="flex items-center gap-3 mb-5 flex-wrap">
               <span className="text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-widest"
-                style={{ background: `${project.color}18`, color: project.color, border: `1px solid ${project.color}30` }}>
+                style={{ background: `${project.color}14`, color: project.color, border: `1px solid ${project.color}28` }}>
                 Projet
               </span>
-              <span className="text-[10px] font-mono" style={{ color: '#374151' }}>
+              <span className="text-[10px] font-mono" style={{ color: "#3a3a3a" }}>
                 {project.stack.join(" · ")}
               </span>
             </div>
@@ -81,18 +81,18 @@ export default function ProjectDetailPage() {
               <GradientText>{project.title}</GradientText>
             </h1>
 
-            <p className="text-lg leading-relaxed max-w-3xl mb-8" style={{ color: '#94a3b8' }}>
+            <p className="text-lg leading-relaxed max-w-3xl mb-8" style={{ color: "#888888" }}>
               {project.description}
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <GlowButton href={project.live} target="_blank" rel="noopener noreferrer" color="blue"
+              <GlowButton href={project.live} target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2">
                 <ExternalLink className="w-4 h-4" />
                 Voir le site
               </GlowButton>
               <GlowButton href={project.github} target="_blank" rel="noopener noreferrer"
-                variant="outline" color="blue" className="flex items-center gap-2">
+                variant="outline" className="flex items-center gap-2">
                 <Github className="w-4 h-4" />
                 Code source
               </GlowButton>
@@ -110,21 +110,21 @@ export default function ProjectDetailPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="rounded-2xl overflow-hidden h-64 md:h-80 relative"
             style={{
-              background: `linear-gradient(135deg, ${project.color}25 0%, ${project.color}08 100%)`,
-              border: `1px solid ${project.color}20`,
-              boxShadow: `0 0 60px ${project.color}15`,
+              background: `linear-gradient(135deg, ${project.color}1e 0%, ${project.color}08 100%)`,
+              border: `1px solid ${project.color}18`,
+              boxShadow: `0 0 60px ${project.color}10`,
             }}
           >
             {/* Grid pattern */}
             <div className="absolute inset-0 opacity-15"
               style={{
-                backgroundImage: `linear-gradient(${project.color}40 1px, transparent 1px), linear-gradient(90deg, ${project.color}40 1px, transparent 1px)`,
-                backgroundSize: '32px 32px',
+                backgroundImage: `linear-gradient(${project.color}35 1px, transparent 1px), linear-gradient(90deg, ${project.color}35 1px, transparent 1px)`,
+                backgroundSize: "32px 32px",
               }} />
 
             {/* Big letter watermark */}
             <div className="absolute right-8 bottom-0 text-[200px] font-black leading-none select-none"
-              style={{ color: `${project.color}10` }}>
+              style={{ color: `${project.color}0e` }}>
               {project.title.charAt(0)}
             </div>
 
@@ -133,8 +133,8 @@ export default function ProjectDetailPage() {
                 className="rounded-3xl flex items-center justify-center"
                 style={{
                   width: 120, height: 120,
-                  background: `linear-gradient(135deg, ${project.color}ee, ${project.color}99)`,
-                  boxShadow: `0 16px 64px ${project.color}50`,
+                  background: `linear-gradient(135deg, ${project.color}dd, ${project.color}88)`,
+                  boxShadow: `0 16px 64px ${project.color}40`,
                 }}
                 animate={{ y: [0, -8, 0], rotate: [0, 1, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -144,7 +144,7 @@ export default function ProjectDetailPage() {
             </div>
 
             <div className="absolute inset-0"
-              style={{ background: 'linear-gradient(to top, rgba(3,4,15,0.6) 0%, transparent 50%)' }} />
+              style={{ background: "linear-gradient(to top, rgba(8,8,8,0.6) 0%, transparent 50%)" }} />
           </motion.div>
         </div>
       </div>
@@ -157,13 +157,13 @@ export default function ProjectDetailPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="rounded-2xl p-8"
-            style={{ background: 'rgba(8,9,28,0.8)', border: '1px solid rgba(99,102,241,0.12)' }}
+            style={{ background: "rgba(12,12,12,0.88)", border: "1px solid rgba(255,255,255,0.07)" }}
           >
             <h2 className="text-xl font-black text-slate-100 mb-4">À propos du projet</h2>
-            <p className="leading-relaxed mb-8" style={{ color: '#94a3b8' }}>{project.longDescription}</p>
+            <p className="leading-relaxed mb-8" style={{ color: "#888888" }}>{project.longDescription}</p>
 
             <div className="flex items-center gap-2 mb-4">
-              <CheckCircle className="w-5 h-5" style={{ color: 'var(--blue)' }} />
+              <CheckCircle className="w-5 h-5" style={{ color: "var(--e-300)" }} />
               <h3 className="text-lg font-black text-slate-100">Fonctionnalités principales</h3>
             </div>
             <ul className="grid md:grid-cols-2 gap-3">
@@ -171,13 +171,13 @@ export default function ProjectDetailPage() {
                 <motion.li
                   key={feature}
                   className="flex items-start gap-3 text-sm"
-                  style={{ color: '#94a3b8' }}
+                  style={{ color: "#888888" }}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 + i * 0.08 }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
-                    style={{ background: 'var(--blue)', boxShadow: '0 0 8px var(--blue)' }} />
+                    style={{ background: "var(--e-300)", boxShadow: "0 0 6px rgba(255,255,255,0.12)" }} />
                   {feature}
                 </motion.li>
               ))}
@@ -194,10 +194,10 @@ export default function ProjectDetailPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="rounded-2xl p-8"
-            style={{ background: 'rgba(8,9,28,0.8)', border: '1px solid rgba(99,102,241,0.12)' }}
+            style={{ background: "rgba(12,12,12,0.88)", border: "1px solid rgba(255,255,255,0.07)" }}
           >
             <div className="flex items-center gap-2 mb-6">
-              <Layers className="w-5 h-5" style={{ color: 'var(--violet)' }} />
+              <Layers className="w-5 h-5" style={{ color: "var(--e-200)" }} />
               <h2 className="text-xl font-black text-slate-100">Technologies utilisées</h2>
             </div>
             <div className="flex flex-wrap gap-2.5">
@@ -206,13 +206,13 @@ export default function ProjectDetailPage() {
                   key={tech}
                   className="px-4 py-2 rounded-full text-sm font-semibold"
                   style={{
-                    background: `${project.color}12`,
+                    background: `${project.color}10`,
                     color: project.color,
-                    border: `1px solid ${project.color}28`,
+                    border: `1px solid ${project.color}25`,
                   }}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.07, boxShadow: `0 4px 16px ${project.color}30` }}
+                  whileHover={{ scale: 1.07, boxShadow: `0 4px 16px ${project.color}25` }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
                   {tech}
@@ -232,10 +232,10 @@ export default function ProjectDetailPage() {
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <h3 className="text-xl font-black text-slate-100 mb-2">Vous aimez ce projet ?</h3>
-            <p className="text-sm mb-6" style={{ color: '#64748b' }}>Découvrez d'autres projets ou contactez-moi pour collaborer.</p>
+            <p className="text-sm mb-6" style={{ color: "#555555" }}>Découvrez d'autres projets ou contactez-moi pour collaborer.</p>
             <div className="flex gap-3 justify-center flex-wrap">
-              <GlowButton onClick={() => router.push("/#projects")} color="blue">Voir tous les projets</GlowButton>
-              <GlowButton onClick={() => router.push("/#contact")} variant="outline" color="blue">Me contacter</GlowButton>
+              <GlowButton onClick={() => router.push("/#projects")}>Voir tous les projets</GlowButton>
+              <GlowButton onClick={() => router.push("/#contact")} variant="outline">Me contacter</GlowButton>
             </div>
           </motion.div>
         </div>

@@ -10,7 +10,7 @@ interface GradientTextProps {
 }
 
 export function GradientText({ children, className = "", colors }: GradientTextProps) {
-  const defaultColors = "from-[#0055FF] via-[#0099FF] to-[#00CCFF]";
+  const defaultColors = "from-[#606060] via-[#d0d0d0] to-[#ffffff]";
   return (
     <motion.span
       className={`bg-gradient-to-r ${colors || defaultColors} bg-clip-text text-transparent ${className}`}

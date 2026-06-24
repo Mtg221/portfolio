@@ -23,10 +23,10 @@ export function Navbar({ activeSection, scrollTo }: NavbarProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={scrolled ? {
-        background: "rgba(0,0,8,0.90)",
+        background: "rgba(8,8,8,0.95)",
         backdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(0,85,255,0.14)",
-        boxShadow: "0 4px 32px rgba(0,0,0,0.6), 0 1px 0 rgba(0,85,255,0.08)",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        boxShadow: "0 4px 32px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.04)",
       } : { background: "transparent" }}>
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
@@ -34,7 +34,7 @@ export function Navbar({ activeSection, scrollTo }: NavbarProps) {
           className="font-black text-sm tracking-tight"
           whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <span className="text-white">PMT</span>
-          <span style={{ color: "var(--e-400)" }}>.</span>
+          <span style={{ color: "var(--e-200)" }}>.</span>
           <span className="ml-1.5 text-[10px] font-mono font-normal" style={{ color: "var(--e-300)", opacity: 0.5 }}>dev</span>
         </motion.button>
 
@@ -43,8 +43,8 @@ export function Navbar({ activeSection, scrollTo }: NavbarProps) {
           {navItems.map(({ id, label }) => (
             <motion.button key={id} onClick={() => scrollTo(id)}
               className="relative transition-colors duration-200 font-medium"
-              style={{ color: activeSection === id ? "var(--e-200)" : "#2a3f5a" }}
-              whileHover={{ y: -1, color: "#5a8abf" } as never}>
+              style={{ color: activeSection === id ? "var(--e-200)" : "#404040" }}
+              whileHover={{ y: -1, color: "#888888" } as never}>
               {label}
               {activeSection === id && (
                 <motion.div
@@ -58,7 +58,7 @@ export function Navbar({ activeSection, scrollTo }: NavbarProps) {
         </div>
 
         {/* Mobile toggle */}
-        <button className="sm:hidden transition-colors" style={{ color: "#2a3f5a" }}
+        <button className="sm:hidden transition-colors" style={{ color: "#404040" }}
           onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -68,7 +68,7 @@ export function Navbar({ activeSection, scrollTo }: NavbarProps) {
       <AnimatePresence>
         {menuOpen && (
           <motion.div className="sm:hidden border-t"
-            style={{ background: "rgba(0,0,8,0.97)", backdropFilter: "blur(20px)", borderColor: "rgba(0,85,255,0.12)" }}
+            style={{ background: "rgba(8,8,8,0.98)", backdropFilter: "blur(20px)", borderColor: "rgba(255,255,255,0.06)" }}
             initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
             <div className="px-4 py-5 flex flex-col gap-1">
               {navItems.map(({ id, label }) => (
@@ -76,8 +76,8 @@ export function Navbar({ activeSection, scrollTo }: NavbarProps) {
                   onClick={() => { scrollTo(id); setMenuOpen(false); }}
                   className="text-left py-2.5 px-3 rounded-lg text-sm font-medium transition-colors"
                   style={{
-                    color: activeSection === id ? "var(--e-200)" : "#2a3f5a",
-                    background: activeSection === id ? "rgba(0,85,255,0.08)" : "transparent",
+                    color: activeSection === id ? "var(--e-200)" : "#404040",
+                    background: activeSection === id ? "rgba(255,255,255,0.05)" : "transparent",
                   }}
                   whileTap={{ scale: 0.97 }}>
                   {label}

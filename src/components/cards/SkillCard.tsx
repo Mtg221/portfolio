@@ -8,12 +8,11 @@ interface SkillCardProps {
   index: number;
 }
 
-/* Quatre nuances de bleu électrique */
 const cfg: Record<string, { accent: string; glow: string; bg: string; border: string; icon: string }> = {
-  "Frontend":         { accent: "#0055FF", glow: "rgba(0,85,255,0.14)",  bg: "rgba(0,85,255,0.07)",  border: "rgba(0,85,255,0.22)",  icon: "⚡" },
-  "Backend":          { accent: "#0077FF", glow: "rgba(0,119,255,0.14)", bg: "rgba(0,119,255,0.07)", border: "rgba(0,119,255,0.22)", icon: "⚙" },
-  "Bases de données": { accent: "#0099FF", glow: "rgba(0,153,255,0.14)", bg: "rgba(0,153,255,0.07)", border: "rgba(0,153,255,0.22)", icon: "🗄" },
-  "DevOps & Outils":  { accent: "#00BBFF", glow: "rgba(0,187,255,0.14)", bg: "rgba(0,187,255,0.07)", border: "rgba(0,187,255,0.22)", icon: "🛠" },
+  "Frontend":         { accent: "#ffffff", glow: "rgba(255,255,255,0.12)", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.18)", icon: "⚡" },
+  "Backend":          { accent: "#d0d0d0", glow: "rgba(208,208,208,0.10)", bg: "rgba(255,255,255,0.04)", border: "rgba(255,255,255,0.14)", icon: "⚙" },
+  "Bases de données": { accent: "#aaaaaa", glow: "rgba(170,170,170,0.10)", bg: "rgba(255,255,255,0.03)", border: "rgba(255,255,255,0.12)", icon: "🗄" },
+  "DevOps & Outils":  { accent: "#888888", glow: "rgba(136,136,136,0.10)", bg: "rgba(255,255,255,0.03)", border: "rgba(255,255,255,0.10)", icon: "🛠" },
 };
 
 const techSymbols: Record<string, string> = {
@@ -33,12 +32,12 @@ export function SkillCard({ category, items, index }: SkillCardProps) {
   return (
     <motion.div
       className="relative rounded-2xl p-5 card-shine overflow-hidden"
-      style={{ background: "rgba(4,10,22,0.85)", border: "1px solid rgba(0,85,255,0.12)", boxShadow: "0 4px 24px rgba(0,0,0,0.5)" }}
+      style={{ background: "rgba(14,14,14,0.90)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 4px 24px rgba(0,0,0,0.6)" }}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.55, type: "spring", stiffness: 90 }}
-      whileHover={{ y: -6, borderColor: c.border, boxShadow: `0 16px 48px rgba(0,0,0,0.6), 0 0 30px ${c.glow}` }}
+      whileHover={{ y: -6, borderColor: c.border, boxShadow: `0 16px 48px rgba(0,0,0,0.7), 0 0 30px ${c.glow}` }}
     >
       {/* Top accent line */}
       <div className="absolute top-0 left-4 right-4 h-px"

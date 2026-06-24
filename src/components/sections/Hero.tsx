@@ -41,11 +41,11 @@ export function Hero({ scrollTo }: HeroProps) {
 
       {/* Glow orbs */}
       <div className="absolute top-20 left-8 w-96 h-96 rounded-full blur-3xl animate-float pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(0,85,255,0.22), transparent)" }} />
+        style={{ background: "radial-gradient(circle, rgba(255,255,255,0.05), transparent)" }} />
       <div className="absolute bottom-16 right-8 w-[480px] h-[480px] rounded-full blur-3xl animate-float pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(0,153,255,0.14), transparent)", animationDelay: "2s" }} />
+        style={{ background: "radial-gradient(circle, rgba(255,255,255,0.04), transparent)", animationDelay: "2s" }} />
       <div className="absolute top-1/2 left-1/3 w-72 h-72 rounded-full blur-3xl animate-float pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(0,204,255,0.10), transparent)", animationDelay: "4s" }} />
+        style={{ background: "radial-gradient(circle, rgba(255,255,255,0.03), transparent)", animationDelay: "4s" }} />
 
       <div className="max-w-6xl mx-auto w-full py-20 relative z-10">
         <div className="grid lg:grid-cols-[1fr_auto] gap-20 items-center">
@@ -94,7 +94,7 @@ export function Hero({ scrollTo }: HeroProps) {
               transition={{ duration: 0.7, delay: 0.32 }}
             >
               <div className="h-px w-8 flex-shrink-0"
-                style={{ background: "linear-gradient(90deg, var(--e-400), transparent)" }} />
+                style={{ background: "linear-gradient(90deg, var(--e-300), transparent)" }} />
               <h2 className="text-xl sm:text-2xl font-bold" style={{ color: "var(--e-200)" }}>
                 <TypewriterText words={roles} />
               </h2>
@@ -102,7 +102,7 @@ export function Hero({ scrollTo }: HeroProps) {
 
             <motion.p
               className="text-base md:text-[17px] max-w-lg mb-8 leading-relaxed"
-              style={{ color: "#5a7a9a" }}
+              style={{ color: "#777777" }}
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.46 }}
             >
@@ -127,7 +127,7 @@ export function Hero({ scrollTo }: HeroProps) {
                       style={{ background: "linear-gradient(135deg, var(--e-400), var(--e-100))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                       {value}
                     </p>
-                    <p className="text-[10px] font-mono mt-0.5" style={{ color: "#2a3f5a" }}>{label}</p>
+                    <p className="text-[10px] font-mono mt-0.5" style={{ color: "#3a3a3a" }}>{label}</p>
                   </div>
                 </motion.div>
               ))}
@@ -137,10 +137,10 @@ export function Hero({ scrollTo }: HeroProps) {
             <motion.div className="flex flex-wrap gap-3 mb-8"
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.74 }}>
-              <GlowButton onClick={() => scrollTo("projects")} color="blue">
+              <GlowButton onClick={() => scrollTo("projects")}>
                 Voir mes projets →
               </GlowButton>
-              <GlowButton href="/cv_fr.pdf" download variant="outline" color="blue">
+              <GlowButton href="/cv_fr.pdf" download variant="outline">
                 Télécharger CV ↓
               </GlowButton>
             </motion.div>
@@ -158,7 +158,7 @@ export function Hero({ scrollTo }: HeroProps) {
                   target={label !== "Email" ? "_blank" : undefined}
                   rel={label !== "Email" ? "noopener noreferrer" : undefined}
                   className="flex items-center gap-1.5 text-xs font-mono"
-                  style={{ color: "#2a3f5a" }}
+                  style={{ color: "#3a3a3a" }}
                   whileHover={{ color: "var(--e-200)", y: -2, scale: 1.05 } as never}
                   transition={{ type: "spring", stiffness: 300 }}>
                   <Icon className="w-4 h-4" />
@@ -181,14 +181,14 @@ export function Hero({ scrollTo }: HeroProps) {
               <div className="absolute inset-[-3px] rounded-full aurora-ring animate-spin-slow animate-flicker" />
               {/* Counter-spin dashes */}
               <div className="absolute inset-[4px] rounded-full animate-spin-reverse"
-                style={{ border: "1px dashed rgba(0,150,255,0.15)" }} />
+                style={{ border: "1px dashed rgba(255,255,255,0.10)" }} />
               {/* Dark mask */}
               <div className="absolute inset-[3px] rounded-full" style={{ background: "var(--bg-base)" }} />
               {/* Inner card */}
               <div className="absolute inset-[8px] rounded-full flex flex-col items-center justify-center"
                 style={{
-                  background: "linear-gradient(145deg, #040c1e, #071428)",
-                  boxShadow: "inset 0 0 60px rgba(0,85,255,0.10)",
+                  background: "linear-gradient(145deg, #111111, #181818)",
+                  boxShadow: "inset 0 0 60px rgba(255,255,255,0.04)",
                 }}>
                 <motion.span
                   className="text-5xl font-black"
@@ -197,7 +197,7 @@ export function Hero({ scrollTo }: HeroProps) {
                   transition={{ duration: 3.5, repeat: Infinity }}>
                   PMT
                 </motion.span>
-                <span className="text-[9px] font-mono mt-1 tracking-[0.25em] uppercase" style={{ color: "#1a2a40" }}>
+                <span className="text-[9px] font-mono mt-1 tracking-[0.25em] uppercase" style={{ color: "#282828" }}>
                   Full Stack
                 </span>
               </div>
@@ -231,10 +231,10 @@ export function Hero({ scrollTo }: HeroProps) {
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }}>
-        <span className="text-[9px] font-mono tracking-[0.3em] uppercase" style={{ color: "#0f1e30" }}>scroll</span>
+        <span className="text-[9px] font-mono tracking-[0.3em] uppercase" style={{ color: "#222222" }}>scroll</span>
         <motion.div
           className="w-px h-10 rounded-full"
-          style={{ background: "linear-gradient(180deg, var(--e-400), transparent)" }}
+          style={{ background: "linear-gradient(180deg, var(--e-300), transparent)" }}
           animate={{ scaleY: [1, 0.3, 1], opacity: [0.8, 0.3, 0.8] }}
           transition={{ duration: 1.8, repeat: Infinity }}
         />

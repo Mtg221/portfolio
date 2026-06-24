@@ -18,7 +18,7 @@ export function About() {
       <div className="absolute inset-0 cyber-grid opacity-25 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-px section-divider" />
 
-      {/* Floating electric sparks */}
+      {/* Floating sparks */}
       {[
         { top: "14%", left: "89%", dur: 3, delay: 0 },
         { top: "74%", left: "4%",  dur: 4, delay: 1 },
@@ -28,7 +28,7 @@ export function About() {
           style={{ top: s.top, left: s.left }}
           animate={{ opacity: [0, 1, 0], scale: [0.5, 1.3, 0.5], rotate: [0, 180, 360] }}
           transition={{ duration: s.dur, repeat: Infinity, delay: s.delay }}>
-          <Zap className="w-4 h-4" style={{ color: "var(--e-300)", opacity: 0.5 }} />
+          <Zap className="w-4 h-4" style={{ color: "var(--e-300)", opacity: 0.4 }} />
         </motion.div>
       ))}
 
@@ -46,7 +46,7 @@ export function About() {
                 className="glass-card glass-card-hover rounded-2xl p-4 flex items-center gap-3 card-shine min-w-[160px]"
                 whileHover={{ scale: 1.05, y: -3 }}>
                 <motion.div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(0,85,255,0.10)" }}
+                  style={{ background: "rgba(255,255,255,0.06)" }}
                   whileHover={{ rotate: 15 }} transition={{ type: "spring", stiffness: 300 }}>
                   <Icon className="w-5 h-5" style={{ color: "var(--e-300)" }} />
                 </motion.div>
@@ -55,7 +55,7 @@ export function About() {
                     style={{ background: "linear-gradient(135deg, var(--e-400), var(--e-100))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                     <CountUp to={countTo} suffix={suffix} />
                   </p>
-                  <p className="text-[10px] font-mono mt-0.5" style={{ color: "#2a3f5a" }}>{label}</p>
+                  <p className="text-[10px] font-mono mt-0.5" style={{ color: "#3a3a3a" }}>{label}</p>
                 </div>
               </motion.div>
             ))}
@@ -70,7 +70,7 @@ export function About() {
                 <>Je travaille avec <span style={{ color: "var(--e-200)" }} className="font-semibold">React</span>, <span style={{ color: "var(--e-300)" }} className="font-semibold">Node.js</span> et <span style={{ color: "var(--e-100)" }} className="font-semibold">MongoDB</span> pour construire des systèmes rapides, propres et évolutifs.</>,
                 <>Je construis des <span className="text-white font-semibold">outils qui améliorent concrètement ton activité</span> dès le premier jour.</>,
               ].map((text, i) => (
-                <motion.p key={i} className="leading-relaxed text-base" style={{ color: "#3a5a7a" }}
+                <motion.p key={i} className="leading-relaxed text-base" style={{ color: "#555555" }}
                   initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }} transition={{ delay: 0.2 + i * 0.1 }}>
                   {text}
@@ -86,18 +86,18 @@ export function About() {
                 whileHover={{ scale: 1.02, x: 4 }}>
                 <div className="flex items-center gap-3 mb-3">
                   <motion.div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(0,85,255,0.10)" }}
+                    style={{ background: "rgba(255,255,255,0.06)" }}
                     animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 4, repeat: Infinity }}>
                     <BookOpen className="w-4 h-4" style={{ color: "var(--e-300)" }} />
                   </motion.div>
                   <p className="text-[10px] font-mono font-bold uppercase tracking-widest" style={{ color: "var(--e-300)" }}>Formation</p>
                 </div>
                 <p className="font-bold text-white text-sm leading-tight">{education.degree}</p>
-                <p className="text-xs mt-1" style={{ color: "#3a5a7a" }}>{education.school}</p>
+                <p className="text-xs mt-1" style={{ color: "#555555" }}>{education.school}</p>
                 <div className="flex gap-2 mt-3 flex-wrap">
                   {[education.period, education.location].map(t => (
                     <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded-full"
-                      style={{ background: "rgba(0,85,255,0.08)", color: "var(--e-300)", border: "1px solid rgba(0,85,255,0.18)" }}>
+                      style={{ background: "rgba(255,255,255,0.05)", color: "var(--e-300)", border: "1px solid rgba(255,255,255,0.10)" }}>
                       {t}
                     </span>
                   ))}
@@ -109,7 +109,7 @@ export function About() {
                 whileHover={{ scale: 1.02, x: 4 }}>
                 <div className="flex items-center gap-3 mb-3">
                   <motion.div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(0,85,255,0.10)" }}
+                    style={{ background: "rgba(255,255,255,0.06)" }}
                     animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 2.5, repeat: Infinity }}>
                     <Languages className="w-4 h-4" style={{ color: "var(--e-200)" }} />
                   </motion.div>
@@ -118,7 +118,7 @@ export function About() {
                 <div className="flex gap-2 flex-wrap">
                   {languages.map(lang => (
                     <motion.span key={lang.name} className="text-xs px-3 py-1.5 rounded-full font-medium"
-                      style={{ background: "rgba(0,85,255,0.08)", color: "var(--e-200)", border: "1px solid rgba(0,85,255,0.18)" }}
+                      style={{ background: "rgba(255,255,255,0.05)", color: "var(--e-200)", border: "1px solid rgba(255,255,255,0.10)" }}
                       whileHover={{ scale: 1.08, y: -2 }}>
                       {lang.name} <span style={{ opacity: 0.5 }}>· {lang.level}</span>
                     </motion.span>
@@ -132,7 +132,7 @@ export function About() {
                 <p className="text-[10px] font-mono font-bold uppercase tracking-widest mb-3" style={{ color: "var(--e-100)" }}>Localisation</p>
                 <div className="space-y-2.5">
                   {[{ Icon: MapPin, text: personalInfo.location }, { Icon: Mail, text: personalInfo.email }].map(({ Icon, text }) => (
-                    <motion.div key={text} className="flex items-center gap-3 text-sm" style={{ color: "#5a7a9a" }}
+                    <motion.div key={text} className="flex items-center gap-3 text-sm" style={{ color: "#777777" }}
                       whileHover={{ x: 4 }}>
                       <Icon className="w-4 h-4 flex-shrink-0" style={{ color: "var(--e-100)" }} />
                       {text}

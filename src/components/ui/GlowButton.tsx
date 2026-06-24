@@ -18,20 +18,19 @@ interface GlowButtonProps {
 export function GlowButton({
   children, onClick, href,
   variant = "primary",
-  color = "blue",
   className = "", download, target, rel,
 }: GlowButtonProps) {
   const isPrimary = variant === "primary";
 
   const baseStyle: React.CSSProperties = isPrimary ? {
-    background:  "linear-gradient(135deg, #0044EE, #0077FF)",
-    color:       "#ffffff",
-    border:      "1px solid rgba(0,153,255,0.5)",
-    boxShadow:   "0 4px 20px rgba(0,85,255,0.30), inset 0 1px 0 rgba(255,255,255,0.08)",
+    background:  "#ffffff",
+    color:       "#080808",
+    border:      "1px solid rgba(255,255,255,0.9)",
+    boxShadow:   "0 4px 20px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.9)",
   } : {
-    background:  "rgba(0,85,255,0.06)",
-    color:       "#60b4ff",
-    border:      "1px solid rgba(0,85,255,0.35)",
+    background:  "rgba(255,255,255,0.04)",
+    color:       "#d0d0d0",
+    border:      "1px solid rgba(255,255,255,0.18)",
     boxShadow:   "none",
   };
 
@@ -44,12 +43,12 @@ export function GlowButton({
 
   const hoverStyle = isPrimary ? {
     scale: 1.05, y: -2,
-    boxShadow: "0 8px 36px rgba(0,85,255,0.45), inset 0 1px 0 rgba(255,255,255,0.12)",
+    boxShadow: "0 8px 36px rgba(255,255,255,0.20)",
   } : {
     scale: 1.04, y: -2,
-    background: "rgba(0,85,255,0.12)",
-    borderColor: "rgba(0,153,255,0.6)",
-    boxShadow: "0 0 24px rgba(0,85,255,0.25)",
+    background: "rgba(255,255,255,0.08)",
+    borderColor: "rgba(255,255,255,0.35)",
+    boxShadow: "0 0 24px rgba(255,255,255,0.10)",
   };
 
   if (href) {

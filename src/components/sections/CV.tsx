@@ -21,7 +21,7 @@ export function CV() {
       {floatingBadges.map(({ Icon, text, top, left, dur, delay, color }, i) => (
         <motion.div key={i}
           className="absolute hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg pointer-events-none"
-          style={{ top, left, background: "rgba(4,10,22,0.8)", border: "1px solid rgba(0,85,255,0.18)", backdropFilter: "blur(8px)" }}
+          style={{ top, left, background: "rgba(10,10,10,0.85)", border: "1px solid rgba(255,255,255,0.10)", backdropFilter: "blur(8px)" }}
           animate={{ y: [-4, 4, -4], opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: dur, repeat: Infinity, ease: "easeInOut", delay }}>
           <Icon className="w-3 h-3" style={{ color }} />
@@ -30,25 +30,25 @@ export function CV() {
       ))}
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(0,85,255,0.06) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)" }} />
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <AnimatedSection>
           <h2 className="text-xs font-mono font-bold uppercase tracking-widest mb-2" style={{ color: "var(--e-300)" }}>05. CV</h2>
           <h3 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">Mon curriculum vitae</h3>
-          <p className="text-base mb-10" style={{ color: "#3a5a7a" }}>Télécharge mon CV pour voir mon parcours complet.</p>
+          <p className="text-base mb-10" style={{ color: "#555555" }}>Télécharge mon CV pour voir mon parcours complet.</p>
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
           <motion.div className="glass-card glass-card-hover rounded-2xl p-10 card-shine" whileHover={{ scale: 1.01 }}>
             <div className="mb-7 flex items-center justify-center">
               <motion.div className="relative w-24 h-24 rounded-3xl flex items-center justify-center"
-                style={{ background: "linear-gradient(135deg, rgba(0,55,200,0.3), rgba(0,120,255,0.3))", border: "1px solid rgba(0,85,255,0.3)", boxShadow: "0 8px 32px rgba(0,85,255,0.2)" }}
+                style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.10))", border: "1px solid rgba(255,255,255,0.16)", boxShadow: "0 8px 32px rgba(255,255,255,0.06)" }}
                 animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                 whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}>
                 <FileText className="w-10 h-10" style={{ color: "var(--e-300)" }} />
-                <motion.div className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black text-white"
-                  style={{ background: "var(--e-400)", boxShadow: "0 0 14px var(--e-400)" }}
+                <motion.div className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black"
+                  style={{ background: "var(--e-400)", color: "#ffffff", boxShadow: "0 0 14px rgba(255,255,255,0.15)" }}
                   animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 2, repeat: Infinity }}>
                   FR
                 </motion.div>
@@ -60,19 +60,19 @@ export function CV() {
             </div>
 
             <h4 className="text-xl font-black text-white mb-1">Papa Makhemout Tall</h4>
-            <p className="text-sm mb-2" style={{ color: "#3a5a7a" }}>Développeur Full Stack</p>
+            <p className="text-sm mb-2" style={{ color: "#555555" }}>Développeur Full Stack</p>
 
             <div className="flex items-center justify-center gap-2 flex-wrap mb-8">
               {["React", "Node.js", "MongoDB", "TypeScript"].map(t => (
                 <motion.span key={t} className="text-[10px] font-mono px-2.5 py-1 rounded-full"
-                  style={{ background: "rgba(0,85,255,0.08)", color: "var(--e-300)", border: "1px solid rgba(0,85,255,0.20)" }}
+                  style={{ background: "rgba(255,255,255,0.05)", color: "var(--e-300)", border: "1px solid rgba(255,255,255,0.10)" }}
                   whileHover={{ scale: 1.1, y: -2 }}>
                   {t}
                 </motion.span>
               ))}
             </div>
 
-            <GlowButton href="/cv_fr.pdf" download color="blue" className="mx-auto">
+            <GlowButton href="/cv_fr.pdf" download className="mx-auto">
               <Download className="w-4 h-4 mr-2 inline" />
               Télécharger mon CV (PDF)
             </GlowButton>
