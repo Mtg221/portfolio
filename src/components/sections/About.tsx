@@ -1,147 +1,82 @@
 "use client";
-
 import { motion } from "framer-motion";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { CountUp } from "@/components/ui/CountUp";
 import { education, languages, personalInfo } from "@/lib/data";
-import { MapPin, Mail, BookOpen, Languages, Briefcase, Code2, Globe, Zap } from "lucide-react";
+import { MapPin, Mail, BookOpen } from "lucide-react";
 
-const stats = [
-  { Icon: Briefcase, countTo: 5,  suffix: "+", label: "Projets réalisés" },
-  { Icon: Code2,     countTo: 10, suffix: "+", label: "Technologies"     },
-  { Icon: Globe,     countTo: 3,  suffix: "",   label: "Langues parlées" },
-];
+const fade = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay },
+});
 
 export function About() {
   return (
-    <section id="about" className="py-24 px-4 relative overflow-hidden section-alt">
-      <div className="absolute inset-0 cyber-grid opacity-25 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-px section-divider" />
+    <section id="about" className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="section-divider mb-16" />
 
-      {/* Floating sparks */}
-      {[
-        { top: "14%", left: "89%", dur: 3, delay: 0 },
-        { top: "74%", left: "4%",  dur: 4, delay: 1 },
-        { top: "42%", left: "93%", dur: 5, delay: 2 },
-      ].map((s, i) => (
-        <motion.div key={i} className="absolute pointer-events-none"
-          style={{ top: s.top, left: s.left }}
-          animate={{ opacity: [0, 1, 0], scale: [0.5, 1.3, 0.5], rotate: [0, 180, 360] }}
-          transition={{ duration: s.dur, repeat: Infinity, delay: s.delay }}>
-          <Zap className="w-4 h-4" style={{ color: "var(--e-300)", opacity: 0.4 }} />
+        <motion.div {...fade(0)} className="mb-12">
+          <p className="text-xs font-mono mb-2" style={{ color: "var(--accent)" }}>01. À propos</p>
+          <h2 className="text-3xl md:text-4xl font-black" style={{ color: "var(--text-bright)" }}>Qui suis-je ?</h2>
         </motion.div>
-      ))}
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <AnimatedSection>
-          <h2 className="text-xs font-mono font-bold uppercase tracking-widest mb-2" style={{ color: "var(--e-300)" }}>01. À propos</h2>
-          <h3 className="text-3xl md:text-4xl font-black text-white mb-8 tracking-tight">Qui suis-je ?</h3>
-        </AnimatedSection>
+        <div className="grid lg:grid-cols-[1fr_360px] gap-12">
+          <div className="space-y-5">
+            <motion.p {...fade(0.1)} className="text-base leading-relaxed" style={{ color: "var(--text)" }}>
+              Développeur fullstack spécialisé dans la création de solutions web modernes orientées produit — commandes, gestion, expérience client.
+            </motion.p>
+            <motion.p {...fade(0.15)} className="text-base leading-relaxed" style={{ color: "var(--text)" }}>
+              Je travaille avec <span style={{ color: "var(--text-bright)" }}>React</span>, <span style={{ color: "var(--text-bright)" }}>Node.js</span> et <span style={{ color: "var(--text-bright)" }}>MongoDB</span> pour construire des systèmes rapides, propres et évolutifs.
+            </motion.p>
+            <motion.p {...fade(0.2)} className="text-base leading-relaxed" style={{ color: "var(--text)" }}>
+              Je construis des outils qui <span style={{ color: "var(--text-bright)" }}>améliorent concrètement ton activité</span> dès le premier jour.
+            </motion.p>
 
-        {/* Stats */}
-        <AnimatedSection delay={0.15}>
-          <div className="flex gap-4 mb-12 flex-wrap">
-            {stats.map(({ Icon, countTo, suffix, label }) => (
-              <motion.div key={label}
-                className="glass-card glass-card-hover rounded-2xl p-4 flex items-center gap-3 card-shine min-w-[160px]"
-                whileHover={{ scale: 1.05, y: -3 }}>
-                <motion.div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(255,255,255,0.06)" }}
-                  whileHover={{ rotate: 15 }} transition={{ type: "spring", stiffness: 300 }}>
-                  <Icon className="w-5 h-5" style={{ color: "var(--e-300)" }} />
-                </motion.div>
-                <div>
-                  <p className="text-2xl font-black leading-none"
-                    style={{ background: "linear-gradient(135deg, var(--e-400), var(--e-100))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                    <CountUp to={countTo} suffix={suffix} />
-                  </p>
-                  <p className="text-[10px] font-mono mt-0.5" style={{ color: "#3a3a3a" }}>{label}</p>
+            <motion.div {...fade(0.3)} className="flex gap-8 pt-4">
+              {[{ value: "5+", label: "Projets" }, { value: "10+", label: "Technos" }, { value: "3", label: "Langues" }].map(({ value, label }) => (
+                <div key={label}>
+                  <p className="text-2xl font-black" style={{ color: "var(--text-bright)" }}>{value}</p>
+                  <p className="text-xs font-mono mt-0.5" style={{ color: "var(--text-dim)" }}>{label}</p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </AnimatedSection>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <AnimatedSection delay={0.2}>
-            <div className="space-y-5">
-              {[
-                <>Développeur fullstack spécialisé dans la création de solutions web modernes orientées produit — commandes, gestion, expérience client.</>,
-                <>Je travaille avec <span style={{ color: "var(--e-200)" }} className="font-semibold">React</span>, <span style={{ color: "var(--e-300)" }} className="font-semibold">Node.js</span> et <span style={{ color: "var(--e-100)" }} className="font-semibold">MongoDB</span> pour construire des systèmes rapides, propres et évolutifs.</>,
-                <>Je construis des <span className="text-white font-semibold">outils qui améliorent concrètement ton activité</span> dès le premier jour.</>,
-              ].map((text, i) => (
-                <motion.p key={i} className="leading-relaxed text-base" style={{ color: "#555555" }}
-                  initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }} transition={{ delay: 0.2 + i * 0.1 }}>
-                  {text}
-                </motion.p>
               ))}
+            </motion.div>
+          </div>
+
+          <motion.div {...fade(0.2)} className="space-y-3">
+            <div className="rounded-2xl p-5" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
+              <div className="flex items-center gap-2 mb-3">
+                <BookOpen className="w-4 h-4" style={{ color: "var(--accent)" }} />
+                <p className="text-xs font-mono font-semibold" style={{ color: "var(--text-dim)" }}>Formation</p>
+              </div>
+              <p className="text-sm font-semibold mb-1" style={{ color: "var(--text-bright)" }}>{education.degree}</p>
+              <p className="text-xs" style={{ color: "var(--text-dim)" }}>{education.school}</p>
+              <p className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>{education.period}</p>
             </div>
-          </AnimatedSection>
 
-          <AnimatedSection delay={0.4}>
-            <div className="space-y-3">
-              {/* Education */}
-              <motion.div className="glass-card glass-card-hover rounded-2xl p-5 card-shine"
-                whileHover={{ scale: 1.02, x: 4 }}>
-                <div className="flex items-center gap-3 mb-3">
-                  <motion.div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(255,255,255,0.06)" }}
-                    animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 4, repeat: Infinity }}>
-                    <BookOpen className="w-4 h-4" style={{ color: "var(--e-300)" }} />
-                  </motion.div>
-                  <p className="text-[10px] font-mono font-bold uppercase tracking-widest" style={{ color: "var(--e-300)" }}>Formation</p>
-                </div>
-                <p className="font-bold text-white text-sm leading-tight">{education.degree}</p>
-                <p className="text-xs mt-1" style={{ color: "#555555" }}>{education.school}</p>
-                <div className="flex gap-2 mt-3 flex-wrap">
-                  {[education.period, education.location].map(t => (
-                    <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded-full"
-                      style={{ background: "rgba(255,255,255,0.05)", color: "var(--e-300)", border: "1px solid rgba(255,255,255,0.10)" }}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Languages */}
-              <motion.div className="glass-card glass-card-hover rounded-2xl p-5 card-shine"
-                whileHover={{ scale: 1.02, x: 4 }}>
-                <div className="flex items-center gap-3 mb-3">
-                  <motion.div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(255,255,255,0.06)" }}
-                    animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 2.5, repeat: Infinity }}>
-                    <Languages className="w-4 h-4" style={{ color: "var(--e-200)" }} />
-                  </motion.div>
-                  <p className="text-[10px] font-mono font-bold uppercase tracking-widest" style={{ color: "var(--e-200)" }}>Langues</p>
-                </div>
-                <div className="flex gap-2 flex-wrap">
-                  {languages.map(lang => (
-                    <motion.span key={lang.name} className="text-xs px-3 py-1.5 rounded-full font-medium"
-                      style={{ background: "rgba(255,255,255,0.05)", color: "var(--e-200)", border: "1px solid rgba(255,255,255,0.10)" }}
-                      whileHover={{ scale: 1.08, y: -2 }}>
-                      {lang.name} <span style={{ opacity: 0.5 }}>· {lang.level}</span>
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Location */}
-              <motion.div className="glass-card glass-card-hover rounded-2xl p-5 card-shine"
-                whileHover={{ scale: 1.02, x: 4 }}>
-                <p className="text-[10px] font-mono font-bold uppercase tracking-widest mb-3" style={{ color: "var(--e-100)" }}>Localisation</p>
-                <div className="space-y-2.5">
-                  {[{ Icon: MapPin, text: personalInfo.location }, { Icon: Mail, text: personalInfo.email }].map(({ Icon, text }) => (
-                    <motion.div key={text} className="flex items-center gap-3 text-sm" style={{ color: "#777777" }}
-                      whileHover={{ x: 4 }}>
-                      <Icon className="w-4 h-4 flex-shrink-0" style={{ color: "var(--e-100)" }} />
-                      {text}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+            <div className="rounded-2xl p-5" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
+              <p className="text-xs font-mono font-semibold mb-3" style={{ color: "var(--text-dim)" }}>Langues</p>
+              <div className="flex gap-2 flex-wrap">
+                {languages.map(l => (
+                  <span key={l.name} className="text-xs px-2.5 py-1 rounded-lg"
+                    style={{ background: "var(--bg-hover)", border: "1px solid var(--border)", color: "var(--text)" }}>
+                    {l.name} · {l.level}
+                  </span>
+                ))}
+              </div>
             </div>
-          </AnimatedSection>
+
+            <div className="rounded-2xl p-5" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
+              <div className="space-y-2.5">
+                {[{ Icon: MapPin, text: personalInfo.location }, { Icon: Mail, text: personalInfo.email }].map(({ Icon, text }) => (
+                  <div key={text} className="flex items-center gap-2.5 text-sm" style={{ color: "var(--text)" }}>
+                    <Icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--accent)" }} />
+                    {text}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
