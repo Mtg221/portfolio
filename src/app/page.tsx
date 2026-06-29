@@ -1,9 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ParticleBackground } from "@/components/ui/ParticleBackground";
-import { ScrollingCodeBackground } from "@/components/ui/ScrollingCodeBackground";
-import { CursorGlow } from "@/components/ui/CursorGlow";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -13,11 +9,9 @@ import { Certifications } from "@/components/sections/Certifications";
 import { CV } from "@/components/sections/CV";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
-import { navItems } from "@/lib/data";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("hero");
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,10 +20,7 @@ export default function Portfolio() {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(id);
-            break;
-          }
+          if (rect.top <= 100 && rect.bottom >= 100) { setActiveSection(id); break; }
         }
       }
     };
@@ -37,36 +28,12 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-base)' }}>
-        <div className="flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--e-500)' }} />
-          <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--e-300)', animationDelay: '0.2s' }} />
-          <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--e-100)', animationDelay: '0.4s' }} />
-        </div>
-      </div>
-    );
-  }
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div className="relative min-h-screen text-slate-200" style={{ background: 'var(--bg-base)' }}>
-      <ScrollingCodeBackground />
-      <CursorGlow />
-      <ScrollProgress />
-      <ParticleBackground />
-      
+    <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <Navbar activeSection={activeSection} scrollTo={scrollTo} />
-      
-      <main className="relative" style={{ zIndex: 10 }}>
+      <main>
         <Hero scrollTo={scrollTo} />
         <About />
         <Projects />
@@ -75,10 +42,7 @@ export default function Portfolio() {
         <CV />
         <Contact />
       </main>
-
-      <div className="relative" style={{ zIndex: 10 }}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }
