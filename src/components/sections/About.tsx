@@ -1,79 +1,73 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { education, languages, personalInfo } from "@/lib/data";
-import { MapPin, Mail, BookOpen } from "lucide-react";
 
-const fade = (delay = 0) => ({
+const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.5, delay },
+  transition: { duration: 0.6, delay },
 });
 
 export function About() {
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-32 px-6 border-t border-[#e5e5e5]">
       <div className="max-w-5xl mx-auto">
-        <div className="section-divider mb-16" />
 
-        <motion.div {...fade(0)} className="mb-12">
-          <p className="text-xs font-mono mb-2" style={{ color: "var(--accent)" }}>01. À propos</p>
-          <h2 className="text-3xl md:text-4xl font-black" style={{ color: "var(--text-bright)" }}>Qui suis-je ?</h2>
-        </motion.div>
+        <motion.p className="text-xs font-mono text-[#555555] mb-4 tracking-widest uppercase" {...fadeUp()}>
+          01. À propos
+        </motion.p>
 
-        <div className="grid lg:grid-cols-[1fr_360px] gap-12">
-          <div className="space-y-5">
-            <motion.p {...fade(0.1)} className="text-base leading-relaxed" style={{ color: "var(--text)" }}>
-              Développeur fullstack spécialisé dans la création de solutions web modernes orientées produit — commandes, gestion, expérience client.
-            </motion.p>
-            <motion.p {...fade(0.15)} className="text-base leading-relaxed" style={{ color: "var(--text)" }}>
-              Je travaille avec <span style={{ color: "var(--text-bright)" }}>React</span>, <span style={{ color: "var(--text-bright)" }}>Node.js</span> et <span style={{ color: "var(--text-bright)" }}>MongoDB</span> pour construire des systèmes rapides, propres et évolutifs.
-            </motion.p>
-            <motion.p {...fade(0.2)} className="text-base leading-relaxed" style={{ color: "var(--text)" }}>
-              Je construis des outils qui <span style={{ color: "var(--text-bright)" }}>améliorent concrètement ton activité</span> dès le premier jour.
-            </motion.p>
-
-            <motion.div {...fade(0.3)} className="flex gap-8 pt-4">
-              {[{ value: "5+", label: "Projets" }, { value: "10+", label: "Technos" }, { value: "3", label: "Langues" }].map(({ value, label }) => (
-                <div key={label}>
-                  <p className="text-2xl font-black" style={{ color: "var(--text-bright)" }}>{value}</p>
-                  <p className="text-xs font-mono mt-0.5" style={{ color: "var(--text-dim)" }}>{label}</p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          <motion.div {...fade(0.2)} className="space-y-3">
-            <div className="rounded-2xl p-5" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
-              <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="w-4 h-4" style={{ color: "var(--accent)" }} />
-                <p className="text-xs font-mono font-semibold" style={{ color: "var(--text-dim)" }}>Formation</p>
-              </div>
-              <p className="text-sm font-semibold mb-1" style={{ color: "var(--text-bright)" }}>{education.degree}</p>
-              <p className="text-xs" style={{ color: "var(--text-dim)" }}>{education.school}</p>
-              <p className="text-xs mt-1" style={{ color: "var(--text-dim)" }}>{education.period}</p>
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <motion.div {...fadeUp(0.1)}>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-8">Qui suis-je ?</h2>
+            <div className="space-y-4 text-[#333333] leading-relaxed">
+              <p>
+                Développeur fullstack spécialisé dans la création de solutions web modernes orientées produit — commandes, gestion, expérience client.
+              </p>
+              <p>
+                Je travaille avec <strong className="text-[#0a0a0a] font-semibold">React</strong>, <strong className="text-[#0a0a0a] font-semibold">Node.js</strong> et <strong className="text-[#0a0a0a] font-semibold">MongoDB</strong> pour construire des systèmes rapides, propres et évolutifs.
+              </p>
+              <p>
+                Je construis des <strong className="text-[#0a0a0a] font-semibold">outils qui améliorent concrètement l'activité</strong> dès le premier jour.
+              </p>
             </div>
+          </motion.div>
 
-            <div className="rounded-2xl p-5" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
-              <p className="text-xs font-mono font-semibold mb-3" style={{ color: "var(--text-dim)" }}>Langues</p>
+          <motion.div className="space-y-6" {...fadeUp(0.2)}>
+            {/* Formation */}
+            <div className="border border-[#e5e5e5] p-6">
+              <p className="text-[10px] font-mono uppercase tracking-widest text-[#555555] mb-3">Formation</p>
+              <p className="font-semibold text-sm mb-1">{education.degree}</p>
+              <p className="text-sm text-[#333333] mb-3">{education.school}</p>
               <div className="flex gap-2 flex-wrap">
-                {languages.map(l => (
-                  <span key={l.name} className="text-xs px-2.5 py-1 rounded-lg"
-                    style={{ background: "var(--bg-hover)", border: "1px solid var(--border)", color: "var(--text)" }}>
-                    {l.name} · {l.level}
+                {[education.period, education.location].map(t => (
+                  <span key={t} className="text-[10px] font-mono px-2 py-1 border border-[#e5e5e5] text-[#333333]">
+                    {t}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-2xl p-5" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
-              <div className="space-y-2.5">
-                {[{ Icon: MapPin, text: personalInfo.location }, { Icon: Mail, text: personalInfo.email }].map(({ Icon, text }) => (
-                  <div key={text} className="flex items-center gap-2.5 text-sm" style={{ color: "var(--text)" }}>
-                    <Icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--accent)" }} />
-                    {text}
-                  </div>
+            {/* Langues */}
+            <div className="border border-[#e5e5e5] p-6">
+              <p className="text-[10px] font-mono uppercase tracking-widest text-[#555555] mb-3">Langues</p>
+              <div className="flex gap-2 flex-wrap">
+                {languages.map(lang => (
+                  <span key={lang.name} className="text-xs px-3 py-1.5 border border-[#e5e5e5] text-[#333333]">
+                    {lang.name} <span className="text-[#555555]">· {lang.level}</span>
+                  </span>
                 ))}
+              </div>
+            </div>
+
+            {/* Localisation */}
+            <div className="border border-[#e5e5e5] p-6">
+              <p className="text-[10px] font-mono uppercase tracking-widest text-[#555555] mb-3">Contact</p>
+              <div className="space-y-1.5 text-sm text-[#333333]">
+                <p>{personalInfo.location}</p>
+                <p>{personalInfo.email}</p>
               </div>
             </div>
           </motion.div>
