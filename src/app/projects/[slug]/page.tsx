@@ -73,14 +73,16 @@ export default function ProjectDetailPage() {
                 <ExternalLink className="w-4 h-4" />
                 Voir le site
               </a>
-              <a
-                href={project.github}
-                target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#e5e5e5] text-sm font-medium text-[#333333] hover:border-[#0a0a0a] hover:text-[#0a0a0a] transition-colors"
-              >
-                <Github className="w-4 h-4" />
-                Code source
-              </a>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#e5e5e5] text-sm font-medium text-[#333333] hover:border-[#0a0a0a] hover:text-[#0a0a0a] transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                  Code source
+                </a>
+              )}
             </div>
           </motion.div>
         </div>

@@ -110,6 +110,28 @@ export const projects = [
     color: "#b8b8b8",
   },
   {
+    slug: "maddelice",
+    title: "Madd'elice",
+    shortDescription: "Site vitrine pour une marque de produits artisanaux à base de fruits",
+    description:
+      "Site web complet pour Madd'elice, une marque artisanale sénégalaise spécialisée dans les produits à base de fruits. Présentation des produits, identité visuelle soignée et expérience utilisateur fluide.",
+    longDescription:
+      "Madd'elice est une marque artisanale proposant des produits naturels à base de fruits. Le site met en valeur l'identité de la marque avec un design moderne et élégant, présente le catalogue de produits et facilite le contact avec les clients. L'accent a été mis sur la performance, le responsive design et une navigation intuitive.",
+    features: [
+      "Présentation de la marque et des valeurs",
+      "Catalogue de produits artisanaux",
+      "Design responsive mobile-first",
+      "Interface utilisateur moderne et élégante",
+      "Formulaire de contact intégré",
+      "Optimisation des performances",
+    ],
+    stack: ["React", "Vite", "Node.js", "Express", "MongoDB"],
+    live: "https://maddelice.com/",
+    github: "",
+    image: "/projects/maddelice.png",
+    color: "#888888",
+  },
+  {
     slug: "footreserve",
     title: "FootReserve",
     shortDescription: "Application de réservation de terrains de football",
