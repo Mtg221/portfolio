@@ -110,6 +110,50 @@ export const projects = [
     color: "#b8b8b8",
   },
   {
+    slug: "smartstock-ai",
+    title: "SmartStock AI",
+    shortDescription: "Gestion de stock intelligente avec IA pour les PME africaines",
+    description:
+      "Plateforme de gestion de stock propulsée par l'IA, conçue pour les PME africaines. Prévisions automatiques, alertes de rupture, tableau de bord analytique et support FCFA.",
+    longDescription:
+      "SmartStock AI est une solution complète de gestion d'inventaire qui utilise l'intelligence artificielle pour automatiser le contrôle des stocks. L'application analyse l'historique des ventes pour anticiper les ruptures de stock, calcule les quantités optimales à commander via la méthode EOQ et offre un dashboard analytique complet avec revenus, produits top et tendances.",
+    features: [
+      "Catalogue produits avec codes-barres et alertes de seuil",
+      "Prévisions IA basées sur l'historique des ventes",
+      "Calcul automatique des commandes (méthode EOQ)",
+      "Dashboard analytique (revenus, tendances, top produits)",
+      "Authentification JWT + 2FA + RBAC (4 niveaux)",
+      "Support devise FCFA et paiements mobiles (Orange Money/Wave)",
+    ],
+    stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+    live: "https://smartstock-ai-topaz.vercel.app/",
+    github: "",
+    image: "/projects/smartstock-ai.png",
+    color: "#888888",
+  },
+  {
+    slug: "facturation",
+    title: "Facturation",
+    shortDescription: "Application de gestion de factures clients",
+    description:
+      "Application web complète de gestion de facturation client — création, envoi et suivi des factures avec une interface claire et professionnelle.",
+    longDescription:
+      "Cette application de facturation permet de gérer l'ensemble du cycle de facturation : création de factures personnalisées, gestion des clients, suivi des paiements et génération de rapports. L'interface épurée facilite la gestion quotidienne des factures pour les indépendants et petites entreprises.",
+    features: [
+      "Création et édition de factures",
+      "Gestion du carnet clients",
+      "Suivi des paiements et statuts",
+      "Génération de PDF",
+      "Tableau de bord des revenus",
+      "Historique des transactions",
+    ],
+    stack: ["React", "Vite", "Node.js", "Express", "MongoDB"],
+    live: "https://facturation-rust.vercel.app/",
+    github: "",
+    image: "/projects/facturation.png",
+    color: "#888888",
+  },
+  {
     slug: "maddelice",
     title: "Madd'elice",
     shortDescription: "Site vitrine pour une marque de produits artisanaux à base de fruits",
